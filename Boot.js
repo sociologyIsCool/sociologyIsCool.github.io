@@ -4,7 +4,7 @@ var Homeless = Homeless || {};
 Homeless.BootState ={
 	init: function(){
 		this.game.stage.backgroundColor = "#fff";
-		this.game.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		// this.game.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
