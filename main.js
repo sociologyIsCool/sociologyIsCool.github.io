@@ -7,7 +7,7 @@ var Homeless = Homeless || {};
 
 //create a new Phaser.Game object and assign it to our custom Homeless.game property.
 // then add our states to the game property.
- Homeless.game = new Phaser.Game(700, 414, Phaser.AUTO);
+ Homeless.game = new Phaser.Game(700, 380, Phaser.AUTO);
 // Homeless.game = new Phaser.Game(1000, 550, Phaser.AUTO);
 
 
