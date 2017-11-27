@@ -1,6 +1,7 @@
 var Homeless = Homeless || {};
 
 // setting game config and loading the assets for the loading screen.
+
 Homeless.BootState ={
 	init: function(){
 		this.game.stage.backgroundColor = "#fff";

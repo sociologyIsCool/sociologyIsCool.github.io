@@ -15,15 +15,15 @@ init: function() {
         //gravity
         this.game.physics.arcade.gravity.y = 1000;
         this.game.stage.backgroundColor = "#4488AA";
-        this.game.world.setBounds(0, 0, 1000, 600);
+        this.game.world.setBounds(0, 0, 770, 513);
 
         //cursor keys for player movement
         this.cursors = this.game.input.keyboard.createCursorKeys();
     },
     
     create: function() {
-    	var backgroundPic = this.game.add.image(this.game.width / 2, this.game.height / 5, "chinatown");
-            backgroundPic.anchor.set(0.5);
+    	var backgroundPic = this.game.add.image(0, 0, "chinaTown");
+        backgroundPic.anchor.set(0.5);
         this.playerAlive = true;
 
 	    //  Create our Timer
@@ -59,11 +59,11 @@ init: function() {
 
 		if (this.cursors.left.isDown || this.player.customParams.isMovingLeft) {
 		    this.player.body.velocity.x = -this.RUNNING_SPEED;
-		    this.player.scale.setTo(-1, 1);
+		    this.player.scale.setTo(-1.5, 1.5);
 		    this.player.play("player");
 		} else if (this.cursors.right.isDown || this.player.customParams.isMovingRight) {
 		    this.player.body.velocity.x = this.RUNNING_SPEED;
-		    this.player.scale.setTo(1, 1);
+		    this.player.scale.setTo(1.5, 1.5);
 		    this.player.play("player");
 		} else {
 		    this.player.animations.stop();
@@ -84,27 +84,31 @@ init: function() {
 
 	loadLevel: function() {
 
+		this.southParkPic = this.game.add.image(350, this.game.height, "southPark");
+		this.southParkPic.anchor.set(0.5);
+		this.southParkPic.scale.setTo(0.3,0.3);
+
 		//dollar
-		this.dollar = this.add.sprite(this.game.width/2, this.game.height - 80, "dollar");
+		this.dollar = this.add.sprite(this.game.rnd.integerInRange(20,this.game.width), this.game.height - 80, "dollar");
 		    this.dollar.anchor.set(0.5);
 		    this.dollar.scale.set(0.07);
 		    this.dollar.inputEnabled = true;
 		    this.dollar.useHandCursor = true;
 
 		//ten dollar
-		this.tenDollar = this.add.sprite(this.game.width/2, this.game.height - 90, "dollar");
+		this.tenDollar = this.add.sprite(this.game.rnd.integerInRange(20,this.game.width), this.game.height, "dollar");
 		    this.tenDollar.anchor.set(0.5);
 		    this.tenDollar.scale.set(0.07);
 		    this.tenDollar.inputEnabled = true;
 		    this.tenDollar.useHandCursor = true;
 
-		this.quarter = this.add.sprite(this.game.width/2, this.game.height-100, "quarter");
+		this.quarter = this.add.sprite(this.game.rnd.integerInRange(20,this.game.width), this.game.height-100, "quarter");
 			this.quarter.anchor.set(0.5);
 			this.quarter.scale.set(0.09);
 			this.quarter.inputEnabled = true;
 			this.quarter.useHandCursor = true;
 
-		this.quarterTwo = this.add.sprite(this.game.width/2, this.game.height-200, "quarter");
+		this.quarterTwo = this.add.sprite(this.game.rnd.integerInRange(20,this.game.width), this.game.height-200, "quarter");
 			this.quarterTwo.anchor.set(0.5);
 			this.quarterTwo.scale.set(0.09);
 			this.quarterTwo.inputEnabled = true;
@@ -121,14 +125,11 @@ init: function() {
 		//southpark 
 		this.game.time.events.loop(Phaser.Timer.SECOND*7.5, this.smackTalk, this);
 
-		this.southParkPic = this.game.add.image(350, this.game.height, "southPark");
-		this.southParkPic.anchor.set(0.5);
-		this.southParkPic.scale.setTo(0.3,0.3);
-
+		
 		//create player.
 		this.player = this.add.sprite(this.game.width/2, this.game.height+20, 'player', 5);
 		this.player.anchor.setTo(0.5);
-		this.player.animations.add("player", [0, 1, 2, 3, 4, 5], 7, true);
+		this.player.animations.add("player", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 7, true);
 		this.player.animations.add("playerJump", [6, 7], 7, true);
 
 		this.game.physics.arcade.enable(this.player);
@@ -139,6 +140,8 @@ init: function() {
 		this.player.body.bounce.set(1, 0);
 		//follow player with the camera.
 		this.game.camera.follow(this.player);
+		this.player.scale.setTo(-1.5, 1.5);
+
 
 		//beg text
 		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.begForChange, this);
@@ -226,16 +229,6 @@ init: function() {
 						"Nobody wants to \n hire me..."
 					  ];
 
-		// var circle = this.game.add.graphics(50, -100);
-		//     circle.lineStyle(2, 0x979797, 1);
-		//     circle.beginFill(0xFFFFFF, 1);
-		//     circle.drawEllipse(200, 300, 80, 20);
-		//     circle.anchor.set(0.5);
-		//     circle.alpha = 0.9;
-		//     circle.fixedToCamera = true;
-
-		// var circleTween = this.game.add.tween(circle).to({alpha:1}, 3000, "Linear", true);
-		// 	circleTween.onComplete.add(function(){circle.destroy();});
 
 		var randomHelpPls = Phaser.ArrayUtils.getRandomItem(helpPls);
 		var style = { font: "20px Arial",

@@ -10,7 +10,6 @@ init: function() {
         this.game.physics.arcade.gravity.y = 1000;
         this.game.stage.backgroundColor = "#4488AA";
         // this.game.world.setBounds(0, 0, 1000, 600);
-
         //cursor keys for player movement
         this.cursors = this.game.input.keyboard.createCursorKeys();
     },
@@ -27,8 +26,6 @@ init: function() {
 	    // infoThree.js
 	    this.timer.loop(20000, this.updateCounter, this);
 
-
-
 	    //  Start the timer running - this is important!
 	    //  It won't start automatically, allowing you to hook it to button events and the like.
 	    this.timer.start();
@@ -41,7 +38,6 @@ init: function() {
         // this.meow = this.game.add.audio("meow");
         // this.cheer = this.game.add.audio("cheer");
         // this.boing = this.game.add.audio("boing");
-
         //load current level method.
         this.loadLevel();
 
@@ -57,17 +53,16 @@ init: function() {
 
 		if (this.cursors.left.isDown || this.player.customParams.isMovingLeft) {
 		    this.player.body.velocity.x = -this.RUNNING_SPEED;
-		    this.player.scale.setTo(-1, 1);
+		    this.player.scale.setTo(-1.5, 1.5);
 		    this.player.play("player");
 		} else if (this.cursors.right.isDown || this.player.customParams.isMovingRight) {
 		    this.player.body.velocity.x = this.RUNNING_SPEED;
-		    this.player.scale.setTo(1, 1);
+		    this.player.scale.setTo(1.5, 1.5);
 		    this.player.play("player");
 		} else {
 		    this.player.animations.stop();
 		    this.player.frame = 5;
 		}
-
 
 		// if(this.player.body.x >= this.game.width+40 ){
 		// 	console.log("player over game.with/4");
@@ -87,56 +82,32 @@ init: function() {
 	        // this.game.events.(this.begForChange, this);
 		}
 
-
 	},
 
 	loadLevel: function() {
 
-		// //dollar
-		// this.dollar = this.add.sprite(this.game.width/2, this.game.height - 80, "dollar");
-		//     this.dollar.anchor.set(0.5);
-		//     this.dollar.scale.set(0.07);
-		//     this.dollar.inputEnabled = true;
-		//     this.dollar.useHandCursor = true;
 
-		// //ten dollar
-		// this.tenDollar = this.add.sprite(this.game.width/2, this.game.height - 90, "dollar");
-		//     this.tenDollar.anchor.set(0.5);
-		//     this.tenDollar.scale.set(0.07);
-		//     this.tenDollar.inputEnabled = true;
-		//     this.tenDollar.useHandCursor = true;
+		this.southParkPic = this.game.add.image(350, this.game.height-50, "southPark");
+		this.southParkPic.anchor.set(0.5);
+		this.southParkPic.scale.setTo(0.3,0.3);
 
-		// this.quarter = this.add.sprite(this.game.width/2, this.game.height-100, "quarter");
-		// 	this.quarter.anchor.set(0.5);
-		// 	this.quarter.scale.set(0.09);
-		// 	this.quarter.inputEnabled = true;
-		// 	this.quarter.useHandCursor = true;
-
-		// this.quarterTwo = this.add.sprite(this.game.width/2, this.game.height-200, "quarter");
-		// 	this.quarterTwo.anchor.set(0.5);
-		// 	this.quarterTwo.scale.set(0.09);
-		// 	this.quarterTwo.inputEnabled = true;
-		// 	this.quarterTwo.useHandCursor = true;
-
+	
 		var style = { font: "bold 20px Arial",
 					  fill: "CC0000",
 					  align: "center"};
 
-		this.updateUrMonies = this.add.text(this.game.width/2, this.game.height/2+130, "Jail Time", style);
+		this.updateUrMonies = this.add.text(10, this.game.height/2 +70, "Jail Time", style);
 		this.updateUrMonies.anchor.set(0.5);
 		this.updateUrMonies.fixedToCamera = true;
 
 		//southpark 
 		this.game.time.events.loop(Phaser.Timer.SECOND*7.5, this.smackTalk, this);
 
-		this.southParkPic = this.game.add.image(350, this.game.height, "southPark");
-		this.southParkPic.anchor.set(0.5);
-		this.southParkPic.scale.setTo(0.3,0.3);
-
+		
 		//create player.
-		this.player = this.add.sprite(this.game.width/2, this.game.height+20, 'player', 5);
+		this.player = this.add.sprite(this.game.width/2, this.game.height-40, 'player', 5);
 		this.player.anchor.setTo(0.5);
-		this.player.animations.add("player", [0, 1, 2, 3, 4, 5], 7, true);
+		this.player.animations.add("player", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 7, true);
 		this.player.animations.add("playerJump", [6, 7], 7, true);
 
 		this.game.physics.arcade.enable(this.player);
@@ -145,19 +116,16 @@ init: function() {
 		this.player.customParams = {};
 		this.player.body.collideWorldBounds = true;
 		this.player.body.bounce.set(1, 0);
+		this.player.scale.setTo(1.5, 1.5);
+
 		//follow player with the camera.
 		this.game.camera.follow(this.player);
 
 
-		//beg text
-		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.begForChange, this);
+		//guilt text
+		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.guilt, this);
 
-
-		//destroy dollar and coins.
-		// this.dollar.events.onInputDown.add(this.destroyDollar, this);
-		// this.tenDollar.events.onInputDown.add(this.destroyTenDollar, this);
-		// this.quarter.events.onInputDown.add(this.destroyQuarter, this);
-		// this.quarterTwo.events.onInputDown.add(this.destroyQuarterTwo, this);
+	
 
 	},
 
@@ -165,60 +133,8 @@ init: function() {
 		this.infoThreeDialogState();
 	},
 
-	
-	// destroyDollar: function(style){
 
-	// 	this.dollar.destroy();
-	// 	this.updateUrMonies.destroy();
-
- //        Homeless.game.global.coins = Homeless.game.global.coins + 1;
- //        console.log(Homeless.game.global.coins);
-
- //        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
-	// 	this.updateUrMonies.anchor.set(0.5);
-	//     this.updateUrMonies.fixedToCamera = true;
-	// },
-
-	// destroyTenDollar: function(style){
-
-	// 	this.tenDollar.destroy();
-	// 	this.updateUrMonies.destroy();
-
- //        Homeless.game.global.coins = Homeless.game.global.coins + 10.00;
- //        console.log(Homeless.game.global.coins);
-
- //        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
-	// 	this.updateUrMonies.anchor.set(0.5);
-	//     this.updateUrMonies.fixedToCamera = true;
-	// },
-
-	// destroyQuarter: function(style){
-
-	// 	this.quarter.destroy();
-	// 	this.updateUrMonies.destroy();
-
- //        Homeless.game.global.coins = Homeless.game.global.coins + 0.25;
- //        console.log(Homeless.game.global.coins);
-
- //        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
-	// 	this.updateUrMonies.anchor.set(0.5);
-	//     this.updateUrMonies.fixedToCamera = true;
-	// },
-
-	// destroyQuarterTwo: function(style){
-
-	// 	this.quarterTwo.destroy();
-	// 	this.updateUrMonies.destroy();
-
- //        Homeless.game.global.coins = Homeless.game.global.coins + 0.25;
- //        console.log(Homeless.game.global.coins);
-
- //        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
-	// 	this.updateUrMonies.anchor.set(0.5);
-	//     this.updateUrMonies.fixedToCamera = true;
-	// },
-
-	begForChange: function(){
+	guilt: function(){
 
 		var helpPls = ["I have a record now...",
 						"Didn't think \n it could get \n any worse...",
@@ -257,6 +173,8 @@ init: function() {
 	smackTalk: function(){
 
 		var meanStuff = [
+						"CRIMINAL!",
+						"PROSTITUTE!"
 						];
 
 		var randomMeanStuff = Phaser.ArrayUtils.getRandomItem(meanStuff);
@@ -281,12 +199,9 @@ init: function() {
         // var cheer = this.game.add.audio("cheer");
         // cheer.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
-            console.log("info One State");
             console.log(Homeless.game.global);
-            //this.state.start("infoTwo");
-            this.game.state.start("infoThree", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
-
-            //this.fade("PlayGame");
+            Homeless.game.global.countUntilJail = 1;
+            this.game.state.start("jailTextOne", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
         }, this);
     },
 

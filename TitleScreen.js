@@ -12,7 +12,7 @@ Homeless.titleScreenState = {
         var titlePic = this.game.add.image(this.game.width / 2, this.game.height / 2, "superPKTitle");
             titlePic.anchor.set(0.5);
 
-        var playButton = this.game.add.button(this.game.width / 2, this.game.height - 150, "playButton", this.startGame, this);
+        var playButton = this.game.add.button(this.game.width / 2, this.game.height - 60, "playButton", this.startGame, this);
             playButton.anchor.set(0.5);
             playButton.tint = 0xFCBE12;
 
@@ -27,24 +27,26 @@ Homeless.titleScreenState = {
         playButtonTween.yoyo(true);
 
          //create player.
-        this.player = this.add.sprite(50, this.game.height / 2 + 109, 'player', 5);
+        this.player = this.add.sprite(50, this.game.height / 2 + 90, 'player', 5);
         this.player.anchor.setTo(0.5);
-        this.player.animations.add("player", [0, 1, 2, 3, 4, 5], 7, true);
+        this.player.animations.add("player", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 7, true);
         this.game.physics.arcade.enable(this.player);
         this.player.body.velocity.x = 50;
         this.player.body.allowGravity = false;
-                
+        this.player.scale.setTo(1.3,1.3);
+
+
         this.titleText();
     },
 
     update: function() {
         if(this.player.body.x >= 500){
-            this.player.scale.setTo(-1,1);
+            this.player.scale.setTo(-1.3,1.3);
             this.player.body.velocity.x = -50;
             this.player.play("player");
         }
         else if(this.player.body.x <= 90){
-            this.player.scale.setTo(1,1);
+            this.player.scale.setTo(1.3,1.3);
             this.player.body.velocity.x = this.player.body.velocity.x += 2;
             this.player.play("player");
         }
@@ -54,12 +56,12 @@ Homeless.titleScreenState = {
 
     titleText: function(){
 
-        var title = ["HOMELESS!"];
+        var title = ["WOMEN\n & HOMELESSNESS"];
 
         var randomMeanStuff = Phaser.ArrayUtils.getRandomItem(title);
 
         var style = { 
-                      font: "bold 70px Arial", 
+                      font: "bold 50px Arial", 
                       fill: "#CC0000", 
                       align: "center",
                       stroke:'#000000',
@@ -70,9 +72,10 @@ Homeless.titleScreenState = {
         var sign = this.game.add.text(this.game.width/2, this.game.world.height/2 -90, randomMeanStuff, style);
             sign.anchor.set(0.5);
             sign.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
+            sign.lineSpacing = -20;
             // sign.alpha = 0.5;
 
-        var secondTitleText = ["Simulator", "The Game"];
+        var secondTitleText = ["Can You Escape it?"];
 
         var randomSecondText = Phaser.ArrayUtils.getRandomItem(secondTitleText);
 
@@ -85,7 +88,7 @@ Homeless.titleScreenState = {
                                   fill: '#FFC300' 
                                 };
 
-        var secondTextTitle = this.game.add.text(this.game.width/2, this.game.world.height/2 -40, randomSecondText, styleForSecondText);
+        var secondTextTitle = this.game.add.text(this.game.width/2, this.game.world.height/2 - 30, randomSecondText, styleForSecondText);
             secondTextTitle.anchor.set(0.5);
             secondTextTitle.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
 
@@ -108,7 +111,6 @@ Homeless.titleScreenState = {
             //yoyo method gives yoyo effect plays forward then reverses if set to true.
             //if yoyo method is set to false it will repeat without reversing.
             alohaTween.yoyo(true);
-
     },
 
 
@@ -119,7 +121,7 @@ Homeless.titleScreenState = {
             console.log("it werks");
             console.log(Homeless.game.global);
             // this.state.start("infoOne");
-            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
+            this.game.state.start("mainIntro", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
             //this.fade("PlayGame");
         }, this);
     },

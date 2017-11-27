@@ -11,20 +11,20 @@ Homeless.PreloadState = {
         this.load.setPreloadSprite(this.loadingBar);
        
         //load assets
-         this.load.image("arrowButton", "assets/sprites/glassArrow.png");
+        this.load.image("arrowButton", "assets/sprites/glassArrow.png");
         this.load.image("actionButton", "assets/sprites/whiteButton.png");
         this.load.image("infoButton", "assets/sprites/arrowButton.png");
-        this.load.image("chinatown", "assets/sprites/Chinatown.jpg");
+        // this.load.image("waikiki", "assets/sprites/waikiki.jpg");
+        this.load.image("chinaTown", "assets/sprites/Chinatown.jpg");
         this.load.image("southPark", "assets/sprites/southPark.png");
         this.load.image("dollar", "assets/sprites/dollar.png");
         this.load.image("quarter", "assets/sprites/quarter.png");
         this.load.image("blueButton", "assets/sprites/blueButton.png");
         this.load.image("jail", "assets/sprites/prisonBars.png");
         this.load.image("beer", "assets/sprites/beer.png");
+        this.load.image("femaleAndChildPopulation", "assets/sprites/hhPopFemaleChild.png");
 
         //this.load.image("actionButton", "assets/sprites/whiteButton.png");     
-     
-
         // this.load.image('backgroundCity', 'assets/sprites/backgroundPic.png');
         this.load.image('superPKTitle', 'assets/sprites/titleScreenHomeless.png');
         this.load.image('playButton', 'assets/sprites/playButton.png');
@@ -50,14 +50,15 @@ Homeless.PreloadState = {
         this.load.spritesheet("player", "assets/sprites/kimmyWalkingSpriteSad.png", 77.5, 147);
 
         //this.load.spritesheet("player", "assets/sprites/player_spritesheet.png",28, 30, 5, 1,1);
-
         //load json file.
         // this.load.text("level", "assets/prefabrications/level.json");
 
     },
     create: function() {
         // this.state.start("TitleScreen");
-        this.state.start("TitleScreen");
+        this.game.state.start("titleScreen", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
+
+        // this.state.start("Intro");
 
     }
 };

@@ -11,7 +11,6 @@ var Homeless = Homeless || {};
 // Homeless.game = new Phaser.Game(1000, 550, Phaser.AUTO);
 
 
-
 Homeless.game.global = {
  coins : 0,
  countUntilJail: 0,
@@ -20,7 +19,7 @@ Homeless.game.global = {
 
 Homeless.game.state.add("Boot", Homeless.BootState);
 Homeless.game.state.add("Preload", Homeless.PreloadState);
-Homeless.game.state.add("TitleScreen", Homeless.titleScreenState);
+Homeless.game.state.add("titleScreen", Homeless.titleScreenState);
 Homeless.game.state.add("infoOne", Homeless.infoOneState);
 Homeless.game.state.add("infoTwo", Homeless.infoTwoState);
 Homeless.game.state.add("infoThree", Homeless.infoThreeState);
@@ -28,6 +27,16 @@ Homeless.game.state.add("choicesToMake", Homeless.choicesToMake);
 Homeless.game.state.add("jail", Homeless.JailState);
 Homeless.game.state.add("dead", Homeless.deadState);
 Homeless.game.state.add("Game", Homeless.GameState);
+Homeless.game.state.add("Intro", Homeless.IntroState);
+Homeless.game.state.add("mainIntro", Homeless.mainIntroState);
+Homeless.game.state.add("mainIntroTwo", Homeless.mainIntroTwoState);
+Homeless.game.state.add("mainIntroThree", Homeless.mainIntroThreeState);
+Homeless.game.state.add("sheltersTextChoice", Homeless.sheltersTextChoiceState);
+Homeless.game.state.add("goBackToExOneState", Homeless.goBackToExOneState);
+Homeless.game.state.add("goBackToExTwoState", Homeless.goBackToExTwoState);
+Homeless.game.state.add("jailTextOne", Homeless.JailTextOneState);
+
+
 // Homeless.game.state.add("Win", Homeless.winScreenState);
 
 //start our boot state
