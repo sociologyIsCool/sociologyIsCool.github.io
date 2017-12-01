@@ -32,7 +32,7 @@ Homeless.goBackToExTwoState = {
 
         this.introText = [
         "A sizable portion of the welfare population experiences domestic violence",
-        "at any given time.  Thus, without significant of affordable housing,", 
+        "at any given time.", 
         "many welfare recipients are at risk of homelessness or continued violence.",
         "In the absence of cash assistance, women who experience domestic violence",
         "may be at increased risk of homelessness or compelled to live with a",
