@@ -9,21 +9,25 @@ Homeless.mainIntroState = {
     },
     create: function() {
       
-        var playButton = this.game.add.button(this.game.width / 2, this.game.height -50, "infoButton", this.infoTwoDialogState, this);
-            playButton.anchor.set(0.5);
+       // var playButton = this.game.add.button(this.game.width / 2, this.game.height -50, "infoButton", this.infoTwoDialogState, this);
+       var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
+            playButton.anchor.set(1.0);
             playButton.tint = 0xFCBE12;
             playButton.alpha = 0.5;
             playButton.scale.setTo(0.25,0.25);
 
-        this.style = { font: "25px Arial", 
-                      fill: "#ffffff"
+        this.style = { font: "19px Arial", 
+                      // fill: "#CC0000"
+                        fill: "#ffffff"
                      };
 
         this.introText = [
-        "Although most issues relevant to homelessness affect both",
-        "men and women. \n \nHomeless women face unique circumstances",
-        "which are often overlooked when it comes to finding",
-        "permanent housing."
+            "According to the State of Hawaii's \"Point in Time\" Report",
+            "Oahu saw an increase of 0.4 percent overall in the homeless",
+            "population in 2017, we have the largest homeless population",
+            "of the islands counting 4,959 people. Oahu also saw a 6 percent",
+            "increase in the chronically homeless population and a 9 percent",
+            "increase of homeless veterans."
         ];
 
         this.line = [];
@@ -32,16 +36,18 @@ Homeless.mainIntroState = {
         this.wordDelay = 120;
         this.lineDelay = 200;
 
-
         // text.anchor.set(0.5);
         // text.alpha = 0.1;
 
         // this.game.add.tween(text).to( { alpha: 1 }, 2000, "Linear", true);
-        this.introWords = this.game.add.text(10, 10, "", this.style);
-
+        this.introWords = this.game.add.text(this.game.width/2, 55, "", this.style);
+        this.introWords.anchor.set(0.5);
 
         this.nextLine();
 
+        var HUDTable = this.game.add.image(this.game.width / 2, 230, "femaleAndChildPopulation");
+        HUDTable.anchor.set(0.5);
+        HUDTable.scale.setTo(0.70,0.70);
 
     },
 
@@ -99,9 +105,10 @@ Homeless.mainIntroState = {
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log(Homeless.game.global);
             //this.state.start("infoTwo");
-            this.game.state.start("mainIntroTwo", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
 
             //this.fade("PlayGame");
         }, this);
     },
 };
+

@@ -1,49 +1,39 @@
 var Homeless = Homeless || {};
 
-Homeless.goBackToExOneState = {
+Homeless.goBackToExThreeState = {
+
+
 
     init: function() {
         // this.game.stage.backgroundColor = "#00000";
         this.game.stage.backgroundColor = "#11111";
-
     },
+
     create: function() {
       
-       var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
+        var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
             playButton.anchor.set(1);
             playButton.tint = 0xFCBE12;
             playButton.alpha = 0.5;
             playButton.scale.setTo(0.25,0.25);
 
-        // var domesticViolence = this.game.add.image(this.game.width/2, this.game.height/2+90, "kidWithPic");
-        //     domesticViolence.anchor.set(0.5);
-        //     domesticViolence.alpha = 0;
-        //     domesticViolence.scale.setTo(0.7,0.7);
+        var domesticViolence = this.game.add.image(this.game.width/2, this.game.height/2+90, "domesticViolence");
+            domesticViolence.anchor.set(0.5);
+            domesticViolence.alpha = 0;
+            domesticViolence.scale.setTo(0.7,0.8);
 
-
-        // var domesticViolenceTween = this.game.add.tween(domesticViolence).to({alpha:1}, 5000, "Linear", true);
-
+        var domesticViolenceTween = this.game.add.tween(domesticViolence).to({alpha:1}, 5000, "Linear", true);
 
         this.style = { font: "19px Arial", 
-                      // fill: "#CC0000"
                         fill: "#ffffff"
-
                      };
 
         this.introText = [
-        "Sociologist Edwin Sutherland came up with a theory called differential",
-        "association theory, which suggested that individuals learn deviant",
-        "behavior from those close to them who provide models",
-        "of and opportunities for deviance. According to Sutherland, deviance",
-        "is less a personal choice and more a result of differential",
-        "socialization processes. An example of this would be a Child that see's",
-        "their father hit their mom, ",
-        "children of battered women are at high",
-        "risk for being victimized (Appel and Holden, 1998)" ,
-        "suffering significant emotional and behavioral maladjustment", 
-        "(Holtzworth-Munroe et al., 1998; Jouriles et al., 2001; Ware et al., 2001)",
-        "and perpetuating violence in their interpersonal relationships",
-        "(O’Leary, 1988)."
+            "The Cycle of Violence is tied to Families and Homelessness",
+            "Among mothers with children experiencing homelessness,",
+            "more than 80% had previously experienced domestic violence.\n",
+            "Source: Aratani, Y. (2009) Homeless Children and Youth, Causes",
+            "and Consequences. New York, NY: National Center for Children in Poverty."
         ];
 
         this.line = [];
@@ -52,23 +42,11 @@ Homeless.goBackToExOneState = {
         this.wordDelay = 120;
         this.lineDelay = 200;
 
-
-        // text.anchor.set(0.5);
-        // text.alpha = 0.1;
-
         // this.game.add.tween(text).to( { alpha: 1 }, 2000, "Linear", true);
         this.introWords = this.game.add.text(10, 10, "", this.style);
 
 
         this.nextLine();
-
-        // var HUDTable = this.game.add.image(this.game.width / 2, 200, "femaleAndChildPopulation");
-        // HUDTable.anchor.set(0.5);
-        // HUDTable.scale.setTo(0.70,0.50);
-
-
-        
-
 
     },
 
@@ -119,16 +97,26 @@ Homeless.goBackToExOneState = {
 
     },
 
-
     infoTwoDialogState: function() {
         // var cheer = this.game.add.audio("cheer");
         // cheer.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log(Homeless.game.global);
             //this.state.start("infoTwo");
-            this.game.state.start("goBackToExTwoState", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
 
             //this.fade("PlayGame");
         }, this);
     },
 };
+
+
+
+
+
+
+
+
+
+
+

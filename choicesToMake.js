@@ -23,6 +23,7 @@ Homeless.choicesToMake = {
             fill: '#FFC300'  
         };
 
+
         // go back to EX button.
         var blueBoxHeight = 1.7;
         var blueButtonFivePositionX = this.game.width/2-150;
@@ -39,16 +40,16 @@ Homeless.choicesToMake = {
         blueButtonFiveTextOnScreen.lineSpacing = -15;
         this.game.add.tween(blueButtonFiveTextOnScreen).to( { alpha: 1 }, 2000, "Linear", true);
 
-        // Sleep in a park.
+        // Compassionate Disruption.
         var blueBoxHeight = 1.7;
         var blueButtonSixPositionX = this.game.width/2+150;
         var blueButtonSixPositionY = this.game.height/10;
-        this.blueButtonSix = this.game.add.button(blueButtonSixPositionX, blueButtonSixPositionY, "blueButton", this.sleepPark, this);
+        this.blueButtonSix = this.game.add.button(blueButtonSixPositionX, blueButtonSixPositionY, "blueButton", this.compassionateDisruption, this);
         this.blueButtonSix.anchor.set(0.5);
         this.blueButtonSix.alpha = 0.2;
         this.blueButtonSix.scale.setTo(4.0, blueBoxHeight);
         this.blueButtonSix.inputEnabled = true;
-        var blueButtonSixText = "Affordable Housing???";     
+        var blueButtonSixText = "COMPASSIONATE \n DISRUPTION???";     
         var blueButtonSixTextOnScreen = this.game.add.text(blueButtonSixPositionX, blueButtonSixPositionY, blueButtonSixText, this.styleButtons);
         blueButtonSixTextOnScreen.anchor.set(0.5);
         blueButtonSixTextOnScreen.alpha = 0.1;
@@ -116,6 +117,16 @@ Homeless.choicesToMake = {
         this.game.add.tween(blueButtonFourTextOnScreen).to( { alpha: 1 }, 2000, "Linear", true);
     
 
+        //create kid.
+        this.kid = this.add.sprite(20, this.game.height/2+65, 'kid', 5);
+        this.kid.anchor.setTo(0.5);
+        this.kid.animations.add("kid", [0, 1, 2, 3, 4, 5], 7, true);
+        this.game.physics.arcade.enable(this.kid);
+        this.kid.body.velocity.x = 10;
+        this.kid.body.allowGravity = false;
+        this.kid.scale.setTo(1.2,1.2);
+
+
         //create player.
         this.player = this.add.sprite(this.game.width/2, this.game.height / 2, 'player', 7);
         this.player.anchor.setTo(0.5);
@@ -143,6 +154,17 @@ Homeless.choicesToMake = {
     update: function() {
 
         this.mouseOverButton();
+
+          if(this.kid.body.x >= 500){
+            this.kid.scale.setTo(-1.2,1.2);
+            this.kid.body.velocity.x = -80;
+            this.kid.play("kid");
+        }
+        else if(this.kid.body.x <= 70){
+            this.kid.scale.setTo(1.2,1.2);
+            this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
+            this.kid.play("kid");
+        }
        
     },
 
@@ -206,11 +228,11 @@ Homeless.choicesToMake = {
         console.log("clicking exbofriendButton");
     },
 
-
     buyAlcohol: function(){
-        if(Homeless.game.global.coins <= 0.00) {
+        if(Homeless.game.global.gotAlcohol == false) {
             console.log("not enough money to buy beer");
             console.log(Homeless.game.global.record);
+            Homeless.game.global.gotAlcohol = true;
             this.game.state.start("dead", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
 
         } else {
@@ -235,6 +257,15 @@ Homeless.choicesToMake = {
             this.amountOfMoney.anchor.set(0.5);
             console.log(Homeless.game.global.coins);
         }
+    },
+
+    compassionateDisruption: function(){
+        this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
+            console.log("compassionate Disruption button clicked!");
+            console.log(Homeless.game.global);
+            this.game.state.start("compassionateDisruption", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            //this.fade("PlayGame");
+        }, this);       
     },
 
     illegal: function(){
@@ -274,6 +305,7 @@ Homeless.choicesToMake = {
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("info One State");
             console.log(Homeless.game.global);
+            Homeless.game.global.coins = 0;
             this.game.state.start("Game", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
             //this.fade("PlayGame");
         }, this);

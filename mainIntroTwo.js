@@ -1,3 +1,6 @@
+
+
+
 var Homeless = Homeless || {};
 
 Homeless.mainIntroTwoState = {
@@ -9,23 +12,34 @@ Homeless.mainIntroTwoState = {
     },
     create: function() {
       
-       var playButton = this.game.add.button(this.game.width / 2, this.game.height -50, "infoButton", this.infoTwoDialogState, this);
-            playButton.anchor.set(0.5);
+        var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
+            playButton.anchor.set(1.);
             playButton.tint = 0xFCBE12;
             playButton.alpha = 0.5;
             playButton.scale.setTo(0.25,0.25);
 
-        this.style = { font: "19px Arial", 
-                      // fill: "#CC0000"
-                        fill: "#ffffff"
-
+        this.style = { font: "15px Arial", 
+                      fill: "#ffffff"
                      };
 
         this.introText = [
-        "Oahu's 2017 Point in time Homeless Population count reveals",
-        "more than half of households with at least one adult & one child",
-        "who are homeless consists of Females (adults and children)."
+            "There is no single reason that contributes to homelessness",
+            "in society. \n",
+
+            "It is a multidimensional issue with a variety of underlying",
+            "economic and social factors which demands response on ",
+            "several fronts\n",
+           
+            "Domestic Violence, Poverty, Substance Abuse, Lack of Affordable Housing,",
+            "and Mental Illness are just a few social issues which factor into",
+            "the issue of homelessness."
         ];
+
+            // "Although most issues relevant to homelessness affect both",
+            // "men and women. \n\nHomeless women face unique circumstances",
+            // "which are often overlooked when it comes to finding",
+            // "permanent housing."
+
 
         this.line = [];
         this.wordIndex = 0;
@@ -42,10 +56,6 @@ Homeless.mainIntroTwoState = {
 
 
         this.nextLine();
-
-        var HUDTable = this.game.add.image(this.game.width / 2, 200, "femaleAndChildPopulation");
-        HUDTable.anchor.set(0.5);
-        HUDTable.scale.setTo(0.70,0.50);
 
 
     },

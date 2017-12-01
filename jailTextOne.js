@@ -25,8 +25,6 @@ Homeless.JailTextOneState = {
         "Research conducted by the University of Nebraska",
         "indicates that 20% - 52% of women with a history of homelessness also have a history of",
         "arrest or incarceration."
-
-
         ];
 
         this.line = [];
@@ -48,9 +46,6 @@ Homeless.JailTextOneState = {
         // var HUDTable = this.game.add.image(this.game.width / 2, 200, "femaleAndChildPopulation");
         // HUDTable.anchor.set(0.5);
         // HUDTable.scale.setTo(0.70,0.50);
-
-
-        
 
 
     },

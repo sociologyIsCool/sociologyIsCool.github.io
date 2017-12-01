@@ -1,6 +1,6 @@
 var Homeless = Homeless || {};
 
-Homeless.infoThreeState = {
+Homeless.compassionateDisruptionState = {
 
     init: function() {
         this.game.stage.backgroundColor = "#00000";
@@ -20,11 +20,7 @@ Homeless.infoThreeState = {
 
         var homelessPosterTween = this.game.add.tween(homelessPoster).to({alpha:1}, 3000, "Linear", true);
 
-
-
-
-
-         this.style = { font: "17px Arial", 
+        this.style = { font: "17px Arial", 
                       // fill: "#CC0000"
                         fill: "#ffffff",
                         stroke: "#000000",
@@ -32,19 +28,32 @@ Homeless.infoThreeState = {
                       };
 
         this.introText = [
-        "Social stigma occurs in situations where there is",
-        "unequal social, economic, and political power and", 
-        "there is an opportunity to label, stereotype, separate",
-        "(us versus them), lose status, and discriminate.",
-        "Stigmatization is due, in part, when people feel",
-        "threatened by another group. Society categorizes",
-        "people who are homeless as no longer “useful” and/or",
-        " “functional” members of capitalism, since they do not",
-        "actively work and support the system(Belcher & DeForge,",
-        "2012;Coates & McKenzie-Mohr, 2010;Chamberlain & Johnson,",
-        "2013;Gaetz, 2013;Karabanow, 2008;Thompson, Bender,",
-        "Windsor, Cook & Williams, 2010)." 
+        "We cannot let the homeless ruin our economy",
+        "and take over our city,” Caldwell wrote.\n",
+        
+        "Tell that to the Homeless parents who work",
+        "full time jobs while their children",
+        "do their homework by flashlight – in cars parked in",
+        "Hawaii’s towns and cities.",
+
+        "This is an example where the dominant group who holds", 
+        "most power in society places its unfocused aggression",
+        "onto the subordiante group in this case, it's the homeless.",
+
         ];
+
+      
+//Since the start of the year, IHS has received 65 referrals about homeless living in cars.
+
+
+
+//Advocates for the homeless also say that people who live in their cars are always on the move -- parking at beach parks, shopping centers, churches and side streets. Many have jobs, which means it's even tougher to find them during working hours.
+
+//Betty Dunn, who was parked at Ala Moana Beach Park on Thursday, became homeless two years ago, after leaving an abusive relationship. She was able to save up enough money to get a car in February.
+
+//IHS workers found about a dozen people living in seven cars scattered throughout the park. The numbers rise at night.
+
+//Although most of the people spotted living in their cars Thursday were singles or couples, families make up the majority of those that IHS helped over the past year. 
 
 
 

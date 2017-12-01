@@ -26,6 +26,15 @@ Homeless.titleScreenState = {
         //if yoyo method is set to false it will repeat without reversing.
         playButtonTween.yoyo(true);
 
+         //create kid.
+        this.kid = this.add.sprite(20, this.game.height-45, 'kid', 5);
+        this.kid.anchor.setTo(0.5);
+        this.kid.animations.add("kid", [0, 1, 2, 3, 4, 5], 7, true);
+        this.game.physics.arcade.enable(this.kid);
+        this.kid.body.velocity.x = 10;
+        this.kid.body.allowGravity = false;
+        this.kid.scale.setTo(1,1);
+
          //create player.
         this.player = this.add.sprite(50, this.game.height / 2 + 90, 'player', 5);
         this.player.anchor.setTo(0.5);
@@ -50,13 +59,25 @@ Homeless.titleScreenState = {
             this.player.body.velocity.x = this.player.body.velocity.x += 2;
             this.player.play("player");
         }
+
+         if(this.kid.body.x >= 500){
+            this.kid.scale.setTo(-1,1);
+            this.kid.body.velocity.x = -80;
+            this.kid.play("kid");
+        }
+        else if(this.kid.body.x <= 70){
+            this.kid.scale.setTo(1,1);
+            this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
+            this.kid.play("kid");
+        }
+
     },
 
   
 
     titleText: function(){
 
-        var title = ["WOMEN\n & HOMELESSNESS"];
+        var title = ["HOMELESSNESS!"];
 
         var randomMeanStuff = Phaser.ArrayUtils.getRandomItem(title);
 
@@ -121,7 +142,7 @@ Homeless.titleScreenState = {
             console.log("it werks");
             console.log(Homeless.game.global);
             // this.state.start("infoOne");
-            this.game.state.start("mainIntro", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
+            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
             //this.fade("PlayGame");
         }, this);
     },

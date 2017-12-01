@@ -9,11 +9,20 @@ Homeless.goBackToExTwoState = {
     },
     create: function() {
       
-        var playButton = this.game.add.button(this.game.width / 2, this.game.height -50, "infoButton", this.infoTwoDialogState, this);
-            playButton.anchor.set(0.5);
+       var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
+            playButton.anchor.set(1);
             playButton.tint = 0xFCBE12;
             playButton.alpha = 0.5;
             playButton.scale.setTo(0.25,0.25);
+
+        var domesticViolence = this.game.add.image(this.game.width/2, this.game.height/2+90, "kidWithPic");
+            domesticViolence.anchor.set(0.5);
+            domesticViolence.alpha = 0;
+            domesticViolence.scale.setTo(0.7,0.7);
+
+
+        var domesticViolenceTween = this.game.add.tween(domesticViolence).to({alpha:1}, 5000, "Linear", true);
+
 
         this.style = { font: "19px Arial", 
                       // fill: "#CC0000"
@@ -23,7 +32,7 @@ Homeless.goBackToExTwoState = {
 
         this.introText = [
         "A sizable portion of the welfare population experiences domestic violence",
-        "at any given time.  Thus, without significant housing support,", 
+        "at any given time.  Thus, without significant of affordable housing,", 
         "many welfare recipients are at risk of homelessness or continued violence.",
         "In the absence of cash assistance, women who experience domestic violence",
         "may be at increased risk of homelessness or compelled to live with a",
@@ -110,9 +119,9 @@ Homeless.goBackToExTwoState = {
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log(Homeless.game.global);
             //this.state.start("infoTwo");
-            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            this.game.state.start("goBackToExThreeState", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
 
-            //this.fade("PlayGame");
+            //this.fade("goBackToExThreeState");
         }, this);
     },
 };

@@ -1,6 +1,6 @@
 var Homeless = Homeless || {};
 
-Homeless.infoThreeState = {
+Homeless.introMisconceptionsTwoState = {
 
     init: function() {
         this.game.stage.backgroundColor = "#00000";
@@ -20,11 +20,7 @@ Homeless.infoThreeState = {
 
         var homelessPosterTween = this.game.add.tween(homelessPoster).to({alpha:1}, 3000, "Linear", true);
 
-
-
-
-
-         this.style = { font: "17px Arial", 
+        this.style = { font: "17px Arial", 
                       // fill: "#CC0000"
                         fill: "#ffffff",
                         stroke: "#000000",
@@ -32,19 +28,46 @@ Homeless.infoThreeState = {
                       };
 
         this.introText = [
-        "Social stigma occurs in situations where there is",
-        "unequal social, economic, and political power and", 
-        "there is an opportunity to label, stereotype, separate",
-        "(us versus them), lose status, and discriminate.",
-        "Stigmatization is due, in part, when people feel",
-        "threatened by another group. Society categorizes",
-        "people who are homeless as no longer “useful” and/or",
-        " “functional” members of capitalism, since they do not",
-        "actively work and support the system(Belcher & DeForge,",
-        "2012;Coates & McKenzie-Mohr, 2010;Chamberlain & Johnson,",
-        "2013;Gaetz, 2013;Karabanow, 2008;Thompson, Bender,",
-        "Windsor, Cook & Williams, 2010)." 
+            
+            "Another sociological theory that can be used to explain capitalism",
+            "as a cause for homelessness is conflict theory.",
+            "conflict theory can be used to explain capitalism and ultimately",
+            "homelessness because constant resentment is held by those who",
+            "have against those who have not."
+           
+
+
         ];
+
+
+
+      //GET REFERENCE!!!!!
+//https://soapboxie.com/social-issues/homelessness-myths-misconceptions
+
+
+
+        // "Many of what society calls deviant behaviors make people",
+        // "who would otherwise want to help unwilling to help people they've",
+        // "come to believe do not deserve it. Using a Symbolic Interactionalist",
+        // "perspective. We can look deeper into the Myths, misconceptions,",
+        // "stereotypes and assumptions that exist in society"
+
+
+
+
+
+
+//Since the start of the year, IHS has received 65 referrals about homeless living in cars.
+
+
+
+//Advocates for the homeless also say that people who live in their cars are always on the move -- parking at beach parks, shopping centers, churches and side streets. Many have jobs, which means it's even tougher to find them during working hours.
+
+//Betty Dunn, who was parked at Ala Moana Beach Park on Thursday, became homeless two years ago, after leaving an abusive relationship. She was able to save up enough money to get a car in February.
+
+//IHS workers found about a dozen people living in seven cars scattered throughout the park. The numbers rise at night.
+
+//Although most of the people spotted living in their cars Thursday were singles or couples, families make up the majority of those that IHS helped over the past year. 
 
 
 

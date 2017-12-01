@@ -14,8 +14,13 @@ Homeless.PreloadState = {
         this.load.image("arrowButton", "assets/sprites/glassArrow.png");
         this.load.image("actionButton", "assets/sprites/whiteButton.png");
         this.load.image("infoButton", "assets/sprites/arrowButton.png");
-        // this.load.image("waikiki", "assets/sprites/waikiki.jpg");
         this.load.image("chinaTown", "assets/sprites/Chinatown.jpg");
+        this.load.image("homelessPoster", "assets/sprites/homelessPoster.jpg");
+        this.load.image("domesticViolence", "assets/sprites/slap.jpeg");
+        this.load.image("kidWithPic", "assets/sprites/kidWithDomesticPic.jpg");
+
+
+
         this.load.image("southPark", "assets/sprites/southPark.png");
         this.load.image("dollar", "assets/sprites/dollar.png");
         this.load.image("quarter", "assets/sprites/quarter.png");
@@ -48,6 +53,7 @@ Homeless.PreloadState = {
         // this.load.spritesheet("player", "assets/sprites/playerRunJump.png", 52, 86);
         // this.load.spritesheet("player", "assets/sprites/kimmySpriteThreeFramesWalking.png", 77.5, 147);
         this.load.spritesheet("player", "assets/sprites/kimmyWalkingSpriteSad.png", 77.5, 147);
+        this.load.spritesheet("kid", "assets/sprites/playerRunJump.png", 52, 86);
 
         //this.load.spritesheet("player", "assets/sprites/player_spritesheet.png",28, 30, 5, 1,1);
         //load json file.

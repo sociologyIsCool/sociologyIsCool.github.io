@@ -97,7 +97,7 @@ init: function() {
 					  align: "center"};
 
 		this.updateUrMonies = this.add.text(10, this.game.height/2 +70, "Jail Time", style);
-		this.updateUrMonies.anchor.set(0.5);
+		this.updateUrMonies.anchor.set(1);
 		this.updateUrMonies.fixedToCamera = true;
 
 		//southpark 

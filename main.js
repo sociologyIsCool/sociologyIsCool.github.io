@@ -14,7 +14,8 @@ var Homeless = Homeless || {};
 Homeless.game.global = {
  coins : 0,
  countUntilJail: 0,
- record : false
+ record : false,
+ gotAlcohol : false
 }
 
 Homeless.game.state.add("Boot", Homeless.BootState);
@@ -34,7 +35,15 @@ Homeless.game.state.add("mainIntroThree", Homeless.mainIntroThreeState);
 Homeless.game.state.add("sheltersTextChoice", Homeless.sheltersTextChoiceState);
 Homeless.game.state.add("goBackToExOneState", Homeless.goBackToExOneState);
 Homeless.game.state.add("goBackToExTwoState", Homeless.goBackToExTwoState);
+Homeless.game.state.add("goBackToExThreeState", Homeless.goBackToExThreeState);
+
 Homeless.game.state.add("jailTextOne", Homeless.JailTextOneState);
+Homeless.game.state.add("compassionateDisruption", Homeless.compassionateDisruptionState);
+Homeless.game.state.add("misconceptions", Homeless.introMisconceptionsState);
+Homeless.game.state.add("misconceptionsTwo", Homeless.introMisconceptionsTwoState);
+
+
+
 
 
 // Homeless.game.state.add("Win", Homeless.winScreenState);

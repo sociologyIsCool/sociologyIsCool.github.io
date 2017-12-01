@@ -2,6 +2,7 @@ var Homeless = Homeless || {};
 
 Homeless.GameState = {
 
+
 init: function() {
         //constants
         this.RUNNING_SPEED = 80;
@@ -177,7 +178,7 @@ init: function() {
 		this.tenDollar.destroy();
 		this.updateUrMonies.destroy();
 
-        Homeless.game.global.coins = Homeless.game.global.coins + 10.00;
+        Homeless.game.global.coins = Homeless.game.global.coins + 1.00;
         console.log(Homeless.game.global.coins);
 
         this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
@@ -251,18 +252,17 @@ init: function() {
 	smackTalk: function(){
 
 		var meanStuff = [
-						 "GROSS",
-						 "What A \n Loser", 
+						 "LAZY BUM",
+						 "DRUG \n ADDICT", 
 						 "BUM!",
-						 "Just Ignore \n Her.",
+						 "She Must be \n CRAZY.",
 						 "Eww, A Bum.", 
-						 "No Change \n Sorry.", 
+						 "BEGGAR.", 
 						 "Ewwww, \n She Stinks!", 
-						 "Lazy Bum!",
-						 "What A Pity.",
+						 "She Must be \n On DRUGS",
+						 "UNEDUCATED \n TRASH!",
 						 "Get A Job.",
 						 "Get A Job.",
-						 "Get Away \n You STINK!",
 						 "Sad..."
 						];
 
