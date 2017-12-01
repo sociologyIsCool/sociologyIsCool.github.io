@@ -6,7 +6,7 @@ Homeless.choicesToMake = {
         this.game.stage.backgroundColor = "#00000";
     },
     create: function() {
-        Homeless.game.global.coins = Homeless.game.global.coins+4;
+        // Homeless.game.global.coins = Homeless.game.global.coins+4;
 
         this.style = { 
             font: "bold 30px Arial", 
@@ -117,14 +117,7 @@ Homeless.choicesToMake = {
         this.game.add.tween(blueButtonFourTextOnScreen).to( { alpha: 1 }, 2000, "Linear", true);
     
 
-        //create kid.
-        this.kid = this.add.sprite(20, this.game.height/2+65, 'kid', 5);
-        this.kid.anchor.setTo(0.5);
-        this.kid.animations.add("kid", [0, 1, 2, 3, 4, 5], 7, true);
-        this.game.physics.arcade.enable(this.kid);
-        this.kid.body.velocity.x = 10;
-        this.kid.body.allowGravity = false;
-        this.kid.scale.setTo(1.2,1.2);
+        this.isChildThere();
 
 
         //create player.
@@ -155,16 +148,12 @@ Homeless.choicesToMake = {
 
         this.mouseOverButton();
 
-          if(this.kid.body.x >= 500){
-            this.kid.scale.setTo(-1.2,1.2);
-            this.kid.body.velocity.x = -80;
-            this.kid.play("kid");
+
+        if(Homeless.game.global.childThere == true){
+            this.childRunning();
         }
-        else if(this.kid.body.x <= 70){
-            this.kid.scale.setTo(1.2,1.2);
-            this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
-            this.kid.play("kid");
-        }
+
+       
        
     },
 
@@ -215,6 +204,40 @@ Homeless.choicesToMake = {
             this.blueButtonSix.alpha = 0.5;
         }
     },
+
+
+
+
+    isChildThere: function(){
+        if(Homeless.game.global.childThere == true){
+              //create kid.
+            this.kid = this.add.sprite(20, this.game.height/2+65, 'kid', 5);
+            this.kid.anchor.setTo(0.5);
+            this.kid.animations.add("kid", [0, 1, 2, 3, 4, 5], 7, true);
+            this.game.physics.arcade.enable(this.kid);
+            this.kid.body.velocity.x = 10;
+            this.kid.body.allowGravity = false;
+            this.kid.scale.setTo(1.2,1.2);
+        } else{
+            console.log("child taken away");
+
+        }
+    },
+
+
+    childRunning: function(){
+         if(this.kid.body.x >= 500){
+            this.kid.scale.setTo(-1.2,1.2);
+            this.kid.body.velocity.x = -80;
+            this.kid.play("kid");
+        }
+        else if(this.kid.body.x <= 70){
+            this.kid.scale.setTo(1.2,1.2);
+            this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
+            this.kid.play("kid");
+        }
+    },
+
 
     loadStartingTextAndMoney: function(){
         this.textOnScreenWidth = this.game.height-35;

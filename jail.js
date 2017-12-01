@@ -5,7 +5,8 @@ Homeless.JailState = {
 init: function() {
         //constants
         this.RUNNING_SPEED = 80;
-
+        //remove kid.
+        Homeless.game.global.childThere = false;
         //gravity
         this.game.physics.arcade.gravity.y = 1000;
         this.game.stage.backgroundColor = "#4488AA";
@@ -47,7 +48,7 @@ init: function() {
 
 	update: function(){
 
-		console.log(this.timer);
+		// console.log(this.timer);
 
 	    this.player.body.velocity.x = 0;
 
@@ -86,23 +87,20 @@ init: function() {
 
 	loadLevel: function() {
 
-
 		this.southParkPic = this.game.add.image(350, this.game.height-50, "southPark");
 		this.southParkPic.anchor.set(0.5);
 		this.southParkPic.scale.setTo(0.3,0.3);
-
 	
 		var style = { font: "bold 20px Arial",
 					  fill: "CC0000",
 					  align: "center"};
 
-		this.updateUrMonies = this.add.text(10, this.game.height/2 +70, "Jail Time", style);
-		this.updateUrMonies.anchor.set(1);
-		this.updateUrMonies.fixedToCamera = true;
+		this.updateUrMonies = this.add.text(this.game.width-50, this.game.height/2 +70, "Jail Time", style);
+		this.updateUrMonies.anchor.set(0.5);
+		// this.updateUrMonies.fixedToCamera = true;
 
 		//southpark 
 		this.game.time.events.loop(Phaser.Timer.SECOND*7.5, this.smackTalk, this);
-
 		
 		//create player.
 		this.player = this.add.sprite(this.game.width/2, this.game.height-40, 'player', 5);
@@ -121,11 +119,8 @@ init: function() {
 		//follow player with the camera.
 		this.game.camera.follow(this.player);
 
-
 		//guilt text
 		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.guilt, this);
-
-	
 
 	},
 
@@ -201,7 +196,7 @@ init: function() {
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log(Homeless.game.global);
             Homeless.game.global.countUntilJail = 1;
-            this.game.state.start("jailTextOne", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
         }, this);
     },
 
