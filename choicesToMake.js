@@ -15,7 +15,7 @@ Homeless.choicesToMake = {
         };
 
          this.styleKid = { 
-            font: "20px Arial", 
+            font: "14px Arial", 
             fill: "#CC0000", 
             align: "center" 
         };
