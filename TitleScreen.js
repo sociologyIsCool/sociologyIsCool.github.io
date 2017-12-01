@@ -97,6 +97,7 @@ Homeless.titleScreenState = {
             // sign.alpha = 0.5;
 
         var secondTitleText = ["Can You Escape it?"];
+        // var thirdTitleText = "SOC 100 - Eunice Brekke";
 
         var randomSecondText = Phaser.ArrayUtils.getRandomItem(secondTitleText);
 
@@ -109,9 +110,27 @@ Homeless.titleScreenState = {
                                   fill: '#FFC300' 
                                 };
 
-        var secondTextTitle = this.game.add.text(this.game.width/2, this.game.world.height/2 - 30, randomSecondText, styleForSecondText);
+                                var styleForThirdText = {
+                                  font: "bold 20px Arial", 
+                                  fill: "#CC0000", 
+                                  align: "center",
+                                  stroke:'#000000',
+                                  strokeThickness: 6,    
+                                  fill: '#FFC300' 
+                                };
+
+
+
+        var secondTextTitle = this.game.add.text(this.game.width/2, this.game.world.height/2 - 50, randomSecondText, styleForSecondText);
             secondTextTitle.anchor.set(0.5);
             secondTextTitle.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
+
+     
+
+        var blueButtonFiveText = "SOC 100 - EUNICE BREKKE";     
+        var blueButtonFiveTextOnScreen = this.game.add.text(this.game.width/2, this.game.height/2-130, blueButtonFiveText,styleForThirdText);
+            blueButtonFiveTextOnScreen.anchor.set(0.5);
+
 
         var alohaText = ["\"Oahu Edition\"", "\"Social Stratification!\""];
         var randomAlohaText = Phaser.ArrayUtils.getRandomItem(alohaText);
