@@ -20,7 +20,6 @@ Homeless.sheltersTextChoiceState = {
         this.style = { font: "15px Arial", 
                       // fill: "#CC0000"
                         fill: "#ffffff"
-
                      };
 
         this.introText = [

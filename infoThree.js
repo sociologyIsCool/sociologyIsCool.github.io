@@ -21,9 +21,6 @@ Homeless.infoThreeState = {
         var homelessPosterTween = this.game.add.tween(homelessPoster).to({alpha:1}, 3000, "Linear", true);
 
 
-
-
-
          this.style = { font: "17px Arial", 
                       // fill: "#CC0000"
                         fill: "#ffffff",

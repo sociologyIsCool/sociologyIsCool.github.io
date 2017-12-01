@@ -14,6 +14,12 @@ Homeless.choicesToMake = {
             align: "center" 
         };
 
+         this.styleKid = { 
+            font: "20px Arial", 
+            fill: "#CC0000", 
+            align: "center" 
+        };
+
         this.styleButtons = { 
             font: "bold 20px Arial", 
             fill: "#CC0000", 
@@ -22,7 +28,6 @@ Homeless.choicesToMake = {
             strokeThickness: 6,    
             fill: '#FFC300'  
         };
-
 
         // go back to EX button.
         var blueBoxHeight = 1.7;
@@ -148,7 +153,6 @@ Homeless.choicesToMake = {
 
         this.mouseOverButton();
 
-
         if(Homeless.game.global.childThere == true){
             this.childRunning();
         }
@@ -206,8 +210,6 @@ Homeless.choicesToMake = {
     },
 
 
-
-
     isChildThere: function(){
         if(Homeless.game.global.childThere == true){
               //create kid.
@@ -220,6 +222,9 @@ Homeless.choicesToMake = {
             this.kid.scale.setTo(1.2,1.2);
         } else{
             console.log("child taken away");
+            this.textOnScreenWidth = this.game.height-35;
+            this.takenAway = this.add.text(this.game.width/2, this.textOnScreenWidth+30, "Kid Got Taken Away", this.styleKid);
+            this.takenAway.anchor.set(0.5);
 
         }
     },
