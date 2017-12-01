@@ -23,8 +23,11 @@ Homeless.JailTextOneState = {
 
         this.introText = [
         "Research conducted by the University of Nebraska",
-        "indicates that 20% - 52% of women with a history of homelessness also have a history of",
-        "arrest or incarceration."
+        "indicates that 20% - 52% of women with a history of",
+        "homelessness also have a history of",
+        "arrest or incarceration.  For many this is an",
+        "adaptive response to dealing with severely limited",
+        "resources."
         ];
 
         this.line = [];
