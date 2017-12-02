@@ -10,7 +10,22 @@
 		  	background-color: black;
 		    padding: 0px;
 		    margin: 0px;
+		    overflow-y: scroll;
+
 		  }
+
+		 body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 		  </style>
 
 	</head>
@@ -36,21 +51,17 @@
 		<script type="text/javascript" src="introMisconceptionsTwo.js"></script>
 
 		<script type="text/javascript" src="goBackToExTextThree.js"></script>
-
-
 		<script type="text/javascript" src="goBackToExTextTwo.js"></script>
 		<script type="text/javascript" src="jailTextOne.js"></script>
-
-
 		<script type="text/javascript" src="Preload.js"></script>
 		<script type="text/javascript" src="Game.js"></script>
 		<script type="text/javascript" src="TitleScreen.js"></script>
-
 		<script type="text/javascript" src="main.js"></script>
-		<audio controls autoplay>
+		
+
+	</body>
+	<audio controls autoplay>
 			<source src="assets/sprites/RSAudio.mp3" type="audio/mp3">
 			Your browser does not support the audio element.
 		</audio>
-
-	</body>
 </html>

@@ -31,8 +31,8 @@ Homeless.goBackToExOneState = {
                      };
 
         this.introText = [
-        "Sociologist Edwin Sutherland came up with a theory called differential",
-        "association theory, which suggested that individuals learn deviant",
+        "Sociologist Edwin Sutherland's differential association theory",
+        "suggests that individuals learn deviant",
         "behavior from those close to them who provide models",
         "of and opportunities for deviance. According to Sutherland, deviance",
         "is less a personal choice and more a result of differential",

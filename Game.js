@@ -8,13 +8,9 @@ init: function() {
         this.RUNNING_SPEED = 80;
         this.JUMPING_SPEED = 500;
         this.BOUNCING_SPEED = 150;
-        // this.catColorOne = [0xFFC65D, 0x7BC8A4, 0x4CC3D9, 0x93648D, 0x7c786a, 0x588c73, 0x8c4646, 0x2a5b84, 0x73503c];
-        // this.tintCatColor = this.catColorOne[this.game.rnd.between(0, this.catColorOne.length - 1)];
-        // this.catColorTwo = [0x4CC3D9, 0x93648D, 0x7c786a, 0x588c73, 0x8c4646, 0x2a5b84, 0x73503c];
-        // this.tintCatColorTwo = this.catColorTwo[this.game.rnd.between(0, this.catColorTwo.length - 1)];
 
         //gravity
-        this.game.physics.arcade.gravity.y = 1000;
+        // this.game.physics.arcade.gravity.y = 1000;
         this.game.stage.backgroundColor = "#4488AA";
         this.game.world.setBounds(0, 0, 770, 513);
 
@@ -70,17 +66,6 @@ init: function() {
 		    this.player.animations.stop();
 		    this.player.frame = 5;
 		}
-
-	    if (this.cursors.up.isDown || this.player.customParams.mustBeg) {
-
-	        console.log("beg"); 
-	        this.player.customParams.mustBeg = false;
-	        // this.game.events.(this.begForChange, this);
-		}
-
-		if(Homeless.game.global.coins >= 11.20){
-			this.infoThreeDialogState();
-		}
 	},
 
 	loadLevel: function() {
@@ -115,11 +100,14 @@ init: function() {
 			this.quarterTwo.inputEnabled = true;
 			this.quarterTwo.useHandCursor = true;
 
-		var style = { font: "bold 20px Arial",
-					  fill: "CC0000",
-					  align: "center"};
+		this.style = {  font: "bold 20px Arial", 
+			            fill: "#CC0000", 
+			            align: "center",
+			            stroke:'#000000',
+			            strokeThickness: 3,    
+			            fill: '#FFC300'  };
 
-		this.updateUrMonies = this.add.text(this.game.width/2, this.game.height/2+130, "Find Change", style);
+		this.updateUrMonies = this.add.text(this.game.width/2, this.game.height/2+130, "Find Change", this.style);
 		this.updateUrMonies.anchor.set(0.5);
 		this.updateUrMonies.fixedToCamera = true;
 
@@ -147,7 +135,6 @@ init: function() {
 		//beg text
 		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.begForChange, this);
 
-
 		//destroy dollar and coins.
 		this.dollar.events.onInputDown.add(this.destroyDollar, this);
 		this.tenDollar.events.onInputDown.add(this.destroyTenDollar, this);
@@ -160,7 +147,7 @@ init: function() {
 		this.infoThreeDialogState();
 	},
 
-	destroyDollar: function(style){
+	destroyDollar: function(){
 
 		this.dollar.destroy();
 		this.updateUrMonies.destroy();
@@ -168,7 +155,7 @@ init: function() {
         Homeless.game.global.coins = Homeless.game.global.coins + 1;
         console.log(Homeless.game.global.coins);
 
-        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
+        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), this.style);
 		this.updateUrMonies.anchor.set(0.5);
 	    this.updateUrMonies.fixedToCamera = true;
 	},
@@ -181,7 +168,7 @@ init: function() {
         Homeless.game.global.coins = Homeless.game.global.coins + 1.00;
         console.log(Homeless.game.global.coins);
 
-        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
+        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), this.style);
 		this.updateUrMonies.anchor.set(0.5);
 	    this.updateUrMonies.fixedToCamera = true;
 	},
@@ -194,7 +181,7 @@ init: function() {
         Homeless.game.global.coins = Homeless.game.global.coins + 0.25;
         console.log(Homeless.game.global.coins);
 
-        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
+        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), this.style);
 		this.updateUrMonies.anchor.set(0.5);
 	    this.updateUrMonies.fixedToCamera = true;
 	},
@@ -207,7 +194,7 @@ init: function() {
         Homeless.game.global.coins = Homeless.game.global.coins + 0.25;
         console.log(Homeless.game.global.coins);
 
-        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), style);
+        this.updateUrMonies = this.add.text(this.game.width/2, this.game.height - 80, "Change: $" + Homeless.game.global.coins.toFixed(2), this.style);
 		this.updateUrMonies.anchor.set(0.5);
 	    this.updateUrMonies.fixedToCamera = true;
 	},
