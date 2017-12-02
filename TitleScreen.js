@@ -7,6 +7,9 @@ Homeless.titleScreenState = {
     },
     create: function() {
 
+        this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
+
+
         this.playerAlive = true;
         var playerVelocity = 50;
         var titlePic = this.game.add.image(this.game.width / 2, this.game.height / 2, "superPKTitle");
@@ -69,6 +72,11 @@ Homeless.titleScreenState = {
             this.kid.scale.setTo(1,1);
             this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
             this.kid.play("kid");
+        }
+
+        if(this.kidText){
+                this.kidText.x = Math.floor(this.kid.x + this.kid.width / 2-40);
+                this.kidText.y = Math.floor(this.kid.y + this.kid.height / 2-100);
         }
 
     },
@@ -152,6 +160,47 @@ Homeless.titleScreenState = {
             //if yoyo method is set to false it will repeat without reversing.
             alohaTween.yoyo(true);
     },
+
+
+     kidTalkingToMommy: function(){
+        if(Homeless.game.global.childThere == true){
+
+             this.helpPls = ["I Love u Mommy!",
+                             "I'm hungry...",
+                             "ewww a bug!",
+                             "It's ok mommy!",
+                             "Everything will \n be ok!",
+                             "I love u Mommy!"
+                            ];
+
+            this.randomHelpPls = Phaser.ArrayUtils.getRandomItem(this.helpPls);
+            var style = { font: "20px Arial",
+                          fill: "CC0000",
+                          align: "center",
+                          stroke: '#000000',
+                          strokeThickness: 5,
+                          fill: '#DCDCDC'
+                        };
+
+            this.kidTextStyle = { font: "20px Arial", 
+                                  fill: "#ffffff", 
+                                  // wordWrap: true, 
+                                  align: "center", 
+                                  stroke: '#000000',
+                                  strokeThickness: 5,
+                                };
+
+            this.kidText = this.game.add.text(0,0,this.randomHelpPls,this.kidTextStyle)
+            this.kidText.anchor.set(0.5);
+            this.kidText.alpha = 0.9;
+
+            this.pls = this.game.add.tween(this.kidText).to({alpha:1}, 3000, "Linear", true);
+            this.pls.onComplete.add(function(){this.kidText.destroy();},this); 
+        }
+
+
+    },
+
 
 
     startGame: function() {

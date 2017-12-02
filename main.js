@@ -16,7 +16,9 @@ Homeless.game.global = {
  countUntilJail: 0,
  record : false,
  gotAlcohol : false,
- childThere : true
+ childThere : true,
+ beggingText : true
+
 }
 
 Homeless.game.state.add("Boot", Homeless.BootState);

@@ -2,7 +2,6 @@ var Homeless = Homeless || {};
 
 Homeless.GameState = {
 
-
 init: function() {
         //constants
         this.RUNNING_SPEED = 80;
@@ -273,15 +272,38 @@ init: function() {
 
 
 	infoThreeDialogState: function() {
-        // var cheer = this.game.add.audio("cheer");
-        // cheer.play();
-        this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
-            console.log("info One State");
-            console.log(Homeless.game.global);
-            //this.state.start("infoTwo");
-            this.game.state.start("infoThree", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
-            //this.fade("PlayGame");
-        }, this);
+
+
+		// Homeless.game.global = {
+		// 		 coins : 0,
+		// 		 countUntilJail: 0,
+		// 		 record : false,
+		// 		 gotAlcohol : false,
+		// 		 childThere : true,
+		// 		 beggingText : true
+
+		// 		}
+
+
+        if(Homeless.game.global.beggingText == true){
+	        this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
+	            console.log("info One State");
+	            console.log(Homeless.game.global);
+	            //this.state.start("infoTwo");
+	            Homeless.game.global.beggingText = false;
+	            this.game.state.start("infoThree", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+	            //this.fade("PlayGame");
+	        }, this);
+    	}else{
+    		 this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
+	            console.log("info One State");
+	            console.log(Homeless.game.global);
+	            //this.state.start("infoTwo");
+	            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+	            //this.fade("PlayGame");
+	        }, this);
+
+    	}
     },
 
 	createOnscreenControls: function() {

@@ -8,6 +8,12 @@ Homeless.choicesToMake = {
     create: function() {
         // Homeless.game.global.coins = Homeless.game.global.coins+4;
 
+
+        this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
+
+        this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
+
+
         this.style = { 
             font: "bold 30px Arial", 
             fill: "#CC0000", 
@@ -37,6 +43,8 @@ Homeless.choicesToMake = {
             strokeThickness: 8,    
             fill: '#FFC300'  
         };
+
+
 
         // go back to EX button.
         var blueBoxHeight = 1.7;
@@ -153,6 +161,10 @@ Homeless.choicesToMake = {
 
         if(Homeless.game.global.childThere == true){
             this.childRunning();
+            if(this.kidText){
+                this.kidText.x = Math.floor(this.kid.x + this.kid.width / 2-40);
+                this.kidText.y = Math.floor(this.kid.y + this.kid.height / 2-100);
+            }
         }
     },
 
@@ -205,9 +217,77 @@ Homeless.choicesToMake = {
     },
 
 
+    mommyTalking: function(){
+
+        this.momHelpPls = ["What am I going to do",
+                           "I love you son",
+                           "my poor baby",
+
+
+                          ];
+
+        this.momRandomHelpPls = Phaser.ArrayUtils.getRandomItem(this.momHelpPls);
+
+        this.momTextStyle = { font: "20px Arial", 
+                              fill: "#ffffff", 
+                              // wordWrap: true, 
+                              align: "center", 
+                              stroke: '#000000',
+                              strokeThickness: 5,
+                            };
+
+        this.momText = this.game.add.text(this.game.width/2,this.game.height/2-140,this.momRandomHelpPls,this.momTextStyle);
+        this.momText.anchor.set(0.5);
+        this.momText.alpha = 0.9;
+        this.momPls = this.game.add.tween(this.momText).to({alpha:1}, 3000, "Linear", true);
+        this.momPls.onComplete.add(function(){this.momText.destroy();},this); 
+
+    },
+
+
+    kidTalkingToMommy: function(){
+        if(Homeless.game.global.childThere == true){
+
+             this.helpPls = ["I Love u Mommy!",
+                             "I'm hungry...",
+                             "ewww a bug!",
+                             "It's ok mommy!",
+                             "Everything will \n be ok!",
+                             "I love u Mommy!"
+                            ];
+
+            this.randomHelpPls = Phaser.ArrayUtils.getRandomItem(this.helpPls);
+            var style = { font: "20px Arial",
+                          fill: "CC0000",
+                          align: "center",
+                          stroke: '#000000',
+                          strokeThickness: 5,
+                          fill: '#DCDCDC'
+                        };
+
+            this.kidTextStyle = { font: "20px Arial", 
+                                  fill: "#ffffff", 
+                                  // wordWrap: true, 
+                                  align: "center", 
+                                  stroke: '#000000',
+                                  strokeThickness: 5,
+                                };
+
+            this.kidText = this.game.add.text(0,0,this.randomHelpPls,this.kidTextStyle)
+            this.kidText.anchor.set(0.5);
+            this.kidText.alpha = 0.9;
+
+            this.pls = this.game.add.tween(this.kidText).to({alpha:1}, 3000, "Linear", true);
+            this.pls.onComplete.add(function(){this.kidText.destroy();},this); 
+        }
+
+
+    },
+
+
     isChildThere: function(){
         if(Homeless.game.global.childThere == true){
-              //create kid.
+            //create kid.
             this.kid = this.add.sprite(20, this.game.height/2+65, 'kid', 5);
             this.kid.anchor.setTo(0.5);
             this.kid.animations.add("kid", [0, 1, 2, 3, 4, 5], 7, true);
@@ -215,23 +295,26 @@ Homeless.choicesToMake = {
             this.kid.body.velocity.x = 10;
             this.kid.body.allowGravity = false;
             this.kid.scale.setTo(1.2,1.2);
-        } else{
+
+
+       
+        } else {
             console.log("child taken away");
             this.textOnScreenWidth = this.game.height-35;
             this.takenAway = this.add.text(this.game.width/2, this.textOnScreenWidth+30, "Kid Got Taken Away", this.styleKid);
             this.takenAway.anchor.set(0.5);
-
         }
     },
 
-
     childRunning: function(){
          if(this.kid.body.x >= 500){
+            console.log(this.kid.body.x);
             this.kid.scale.setTo(-1.2,1.2);
             this.kid.body.velocity.x = -80;
             this.kid.play("kid");
         }
         else if(this.kid.body.x <= 70){
+           
             this.kid.scale.setTo(1.2,1.2);
             this.kid.body.velocity.x = this.kid.body.velocity.x += 2;
             this.kid.play("kid");
