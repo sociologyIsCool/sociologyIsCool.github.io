@@ -8,6 +8,8 @@ init: function() {
         this.JUMPING_SPEED = 500;
         this.BOUNCING_SPEED = 150;
 
+        this.chaChing = this.game.add.audio('chaChing');
+
         //gravity
         // this.game.physics.arcade.gravity.y = 1000;
         this.game.stage.backgroundColor = "#4488AA";
@@ -147,7 +149,7 @@ init: function() {
 	},
 
 	destroyDollar: function(){
-
+		this.chaChing.play();
 		this.dollar.destroy();
 		this.updateUrMonies.destroy();
 
@@ -160,7 +162,7 @@ init: function() {
 	},
 
 	destroyTenDollar: function(style){
-
+		this.chaChing.play();
 		this.tenDollar.destroy();
 		this.updateUrMonies.destroy();
 
@@ -173,7 +175,7 @@ init: function() {
 	},
 
 	destroyQuarter: function(style){
-
+        this.chaChing.play();
 		this.quarter.destroy();
 		this.updateUrMonies.destroy();
 
@@ -186,7 +188,7 @@ init: function() {
 	},
 
 	destroyQuarterTwo: function(style){
-
+        this.chaChing.play();
 		this.quarterTwo.destroy();
 		this.updateUrMonies.destroy();
 

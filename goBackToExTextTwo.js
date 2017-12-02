@@ -114,6 +114,8 @@ Homeless.goBackToExTwoState = {
 
 
     infoTwoDialogState: function() {
+         this.click = this.game.add.audio('click');
+        this.click.play();
         // var cheer = this.game.add.audio("cheer");
         // cheer.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {

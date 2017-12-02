@@ -8,6 +8,7 @@ Homeless.choicesToMake = {
     create: function() {
         // Homeless.game.global.coins = Homeless.game.global.coins+4;
 
+        this.click = this.game.add.audio('click');
 
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
 
@@ -330,11 +331,13 @@ Homeless.choicesToMake = {
 
 
     exBoyFriend: function(){
+        this.click.play();
         this.game.state.start("goBackToExOneState", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
         console.log("clicking exbofriendButton");
     },
 
     buyAlcohol: function(){
+        this.click.play();
         if(Homeless.game.global.gotAlcohol == false && Homeless.game.global.coins >=2) {
             console.log(Homeless.game.global.record);
             Homeless.game.global.gotAlcohol = true;
@@ -371,6 +374,7 @@ Homeless.choicesToMake = {
     },
 
     compassionateDisruption: function(){
+        this.click.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("compassionate Disruption button clicked!");
             console.log(Homeless.game.global);
@@ -380,6 +384,7 @@ Homeless.choicesToMake = {
     },
 
     illegal: function(){
+        this.click.play();
         if(Homeless.game.global.record == false) {
             Homeless.game.global.coins += 10.00;
             Homeless.game.global.countUntilJail = Homeless.game.global.countUntilJail+1;
@@ -402,6 +407,7 @@ Homeless.choicesToMake = {
 
 
     shelter: function(){
+        this.click.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("shelter button clicked!");
             console.log(Homeless.game.global);
@@ -411,6 +417,7 @@ Homeless.choicesToMake = {
     },
 
     startGame: function() {
+        this.click.play();
         // var cheer = this.game.add.audio("cheer");
         // cheer.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {

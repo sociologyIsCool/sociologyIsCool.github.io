@@ -46,7 +46,9 @@ Homeless.PreloadState = {
         // this.game.load.audio("squeekSound", ["assets/sprites/squeekSound.mp3", "assets/sounds/squeekSound.ogg"]);
         // this.game.load.audio("ouch", ["assets/sprites/ouch.mp3", "assets/sounds/ouch.ogg"]);
         // this.game.load.audio("meow", ["assets/sprites/meow.mp3", "assets/sounds/meow.ogg"]);
-        // this.game.load.audio("cheer", ["assets/sprites/cheer.mp3", "assets/sounds/cheer.ogg"]);
+        
+        this.game.load.audio("click", ["assets/sprites/click.mp3", "assets/sprites/click.ogg"]);
+        this.game.load.audio("chaChing", ["assets/sprites/coinSound.mp3", "assets/sprites/coinSound.ogg"]);
 
         //spritesheet ("key", "path", xframeSize, yframeSize, num of frames in sheet.)    
         //this.load.spritesheet("player", "assets/sprites/playerIdle.png",60,84);

@@ -201,11 +201,9 @@ Homeless.titleScreenState = {
 
     },
 
-
-
     startGame: function() {
-        // var cheer = this.game.add.audio("cheer");
-        // cheer.play();
+        this.click = this.game.add.audio('click');
+        this.click.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("it werks");
             console.log(Homeless.game.global);
