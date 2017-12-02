@@ -101,14 +101,14 @@ init: function() {
 			this.quarterTwo.inputEnabled = true;
 			this.quarterTwo.useHandCursor = true;
 
-		this.style = {  font: "bold 20px Arial", 
+		this.style = {  font: "bold 30px Arial", 
 			            fill: "#CC0000", 
 			            align: "center",
 			            stroke:'#000000',
 			            strokeThickness: 3,    
 			            fill: '#FFC300'  };
 
-		this.updateUrMonies = this.add.text(this.game.width/2, this.game.height/2+130, "Find Change", this.style);
+		this.updateUrMonies = this.add.text(this.game.width/2, 40, "Find Change", this.style);
 		this.updateUrMonies.anchor.set(0.5);
 		this.updateUrMonies.fixedToCamera = true;
 
