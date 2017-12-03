@@ -7,6 +7,34 @@ Homeless.titleScreenState = {
     },
     create: function() {
 
+        // //globals.
+        // Homeless.game.global = {
+        //  coins : 0,
+        //  countUntilJail: 0,
+        //  record : false,
+        //  // if compassionateDisruption is false can't finish game.
+        //  compassionateDisruption: false,
+        //  gotAlcohol : false,
+        //  childThere : true,
+        //  // if begging text is false the info scene after the begging for change will not show.
+        //  beggingText : true,
+        //  goBackToEx : false,
+        //  retreatism : false,
+        //  // if change please is false can't finish game
+        //  changePlease : false,
+        // }
+
+
+        // reset global variables
+        Homeless.game.global.record = false;
+        Homeless.game.global.compassionateDisruption = false;
+        Homeless.game.global.gotAlcohol = false;
+        Homeless.game.global.childThere = true;
+        Homeless.game.global.begging = true;
+        Homeless.game.global.goBackToEx = false;
+        Homeless.game.global.retreatism = false;
+        Homeless.game.global.changePlease = false;
+
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
 
 

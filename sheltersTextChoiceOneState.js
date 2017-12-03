@@ -44,7 +44,7 @@ Homeless.sheltersTextChoiceOneState = {
             "Shelters provide immediate safety to women and their children",
             "and help women gain control over their lives. \n",
             "RESULTS:",
-            "Amount of money made So Far: $" + Homeless.game.global.coins + " ",
+            "Amount of money made So Far: $" + Homeless.game.global.coins.toFixed(2) + " ",
             "Do you have a Criminal Record: " + Homeless.game.global.record + " ",
             "Son Saw Mom Get Hurt By EX: " + Homeless.game.global.goBackToEx + "\n" +
             "Alcoholic: " + Homeless.game.global.gotAlcohol + "\n",

@@ -217,8 +217,6 @@ Homeless.choicesToMake = {
         this.momHelpPls = ["What am I going to do",
                            "I love you son",
                            "my poor baby",
-
-
                           ];
 
         this.momRandomHelpPls = Phaser.ArrayUtils.getRandomItem(this.momHelpPls);

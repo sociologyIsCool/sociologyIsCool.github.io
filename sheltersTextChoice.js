@@ -37,9 +37,10 @@ Homeless.sheltersTextChoiceState = {
        
 
         this.introText = [
-            "Sorry, Shelter Is Full. \nCome back Later.",
+            "Sorry, Shelter Is Full. \nExplore options and comback later but",
+            "try not to get into trouble",
             "\n\n",
-            "Amount of money made So Far: " + Homeless.game.global.coins + " \n\n",
+            "Amount of money made So Far: $" + Homeless.game.global.coins.toFixed(2) + " \n\n",
             //"Do you have a Criminal Record: " + Homeless.game.global.record + " \n",
             //"Son Saw Mom Get Hurt By EX: " + Homeless.game.global.goBackToEx + "\n" +
             //"Alcoholic: " + Homeless.game.global.gotAlcohol + "\n",
