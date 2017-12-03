@@ -190,15 +190,13 @@ Homeless.titleScreenState = {
                                   strokeThickness: 5,
                                 };
 
-            this.kidText = this.game.add.text(0,0,this.randomHelpPls,this.kidTextStyle)
+            this.kidText = this.game.add.text(0,0,this.randomHelpPls,this.kidTextStyle);
             this.kidText.anchor.set(0.5);
             this.kidText.alpha = 0.9;
 
             this.pls = this.game.add.tween(this.kidText).to({alpha:1}, 3000, "Linear", true);
             this.pls.onComplete.add(function(){this.kidText.destroy();},this); 
         }
-
-
     },
 
     startGame: function() {

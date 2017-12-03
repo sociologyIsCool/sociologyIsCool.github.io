@@ -132,7 +132,6 @@ init: function() {
 		this.game.camera.follow(this.player);
 		this.player.scale.setTo(-1.5, 1.5);
 
-
 		//beg text
 		this.game.time.events.loop(Phaser.Timer.SECOND*6, this.begForChange, this);
 

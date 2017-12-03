@@ -22,29 +22,50 @@ Homeless.sheltersTextChoiceState = {
                         fill: "#ffffff"
                      };
 
+
+
+        // coins : 0,
+        // countUntilJail: 0,
+        // record : false,
+        // gotAlcohol : false,
+        // childThere : true,
+        // beggingText : true,
+        // goBackToEx : true,
+        // retreatism : true,
+        // changePlease : true,
+        
+       
+
         this.introText = [
-        "Safe emergency shelter is a NECESSARY first step",
-        "in escaping homelessness.",  
-        "Shelters provide immediate safety to women and their children",
-        "and help women gain control over their lives. \n"
+            "Sorry, Shelter Is Full. \nCome back Later.",
+            "\n\n",
+            "Amount of money made So Far: " + Homeless.game.global.coins + " \n\n",
+            //"Do you have a Criminal Record: " + Homeless.game.global.record + " \n",
+            //"Son Saw Mom Get Hurt By EX: " + Homeless.game.global.goBackToEx + "\n" +
+            //"Alcoholic: " + Homeless.game.global.gotAlcohol + "\n",
+
+            "Programmed by Travis H. 2017",
+            "Music By Rebel Souljahz -\"People in the Street\"",
         ];
+
+
 
         this.line = [];
         this.wordIndex = 0;
         this.lineIndex = 0;
-        this.wordDelay = 120;
+        this.wordDelay = 220;
         this.lineDelay = 200;
-
 
         // text.anchor.set(0.5);
         // text.alpha = 0.1;
 
         // this.game.add.tween(text).to( { alpha: 1 }, 2000, "Linear", true);
-        this.introWords = this.game.add.text(10, 10, "", this.style);
+        this.introWords = this.game.add.text(this.game.width/2, this.game.height/2, "", this.style);
+        this.introWords = this.game.add.text(10, 30, "", this.style);
 
 
         this.nextLine();
-
+        this.showScore();
 
     },
 
@@ -52,8 +73,19 @@ Homeless.sheltersTextChoiceState = {
        
     },
 
-    nextLine: function() {
 
+
+    showScore: function(){
+         console.log(
+            "coins: " + Homeless.game.global.coins + "\n" +
+            "record: " + Homeless.game.global.record + "\n" +
+            "kept child: " + Homeless.game.global.childThere + "\n" +
+            "went back to Ex: " + Homeless.game.global.goBackToEx + "\n" +
+            "drank beer: " + Homeless.game.global.gotAlcohol + "\n"
+        );
+    },
+
+    nextLine: function() {
 
         if (this.lineIndex === this.introText.length)
         {
@@ -94,7 +126,6 @@ Homeless.sheltersTextChoiceState = {
         }
 
     },
-
 
     infoTwoDialogState: function() {
          this.click = this.game.add.audio('click');

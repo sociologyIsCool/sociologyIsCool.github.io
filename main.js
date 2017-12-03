@@ -15,10 +15,16 @@ Homeless.game.global = {
  coins : 0,
  countUntilJail: 0,
  record : false,
+ // if compassionateDisruption is false can't finish game.
+ compassionateDisruption: false,
  gotAlcohol : false,
  childThere : true,
- beggingText : true
-
+ // if begging text is false the info scene after the begging for change will not show.
+ beggingText : true,
+ goBackToEx : false,
+ retreatism : false,
+ // if change please is false can't finish game
+ changePlease : false,
 }
 
 Homeless.game.state.add("Boot", Homeless.BootState);
@@ -36,6 +42,8 @@ Homeless.game.state.add("mainIntro", Homeless.mainIntroState);
 Homeless.game.state.add("mainIntroTwo", Homeless.mainIntroTwoState);
 Homeless.game.state.add("mainIntroThree", Homeless.mainIntroThreeState);
 Homeless.game.state.add("sheltersTextChoice", Homeless.sheltersTextChoiceState);
+Homeless.game.state.add("sheltersTextOneChoice", Homeless.sheltersTextChoiceOneState);
+
 Homeless.game.state.add("goBackToExOneState", Homeless.goBackToExOneState);
 Homeless.game.state.add("goBackToExTwoState", Homeless.goBackToExTwoState);
 Homeless.game.state.add("goBackToExThreeState", Homeless.goBackToExThreeState);
@@ -44,6 +52,7 @@ Homeless.game.state.add("jailTextOne", Homeless.JailTextOneState);
 Homeless.game.state.add("compassionateDisruption", Homeless.compassionateDisruptionState);
 Homeless.game.state.add("misconceptions", Homeless.introMisconceptionsState);
 Homeless.game.state.add("misconceptionsTwo", Homeless.introMisconceptionsTwoState);
+
 
 
 

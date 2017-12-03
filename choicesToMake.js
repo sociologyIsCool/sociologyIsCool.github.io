@@ -9,11 +9,8 @@ Homeless.choicesToMake = {
         // Homeless.game.global.coins = Homeless.game.global.coins+4;
 
         this.click = this.game.add.audio('click');
-
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
-
         this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
-
 
         this.style = { 
             font: "bold 30px Arial", 
@@ -44,8 +41,6 @@ Homeless.choicesToMake = {
             strokeThickness: 8,    
             fill: '#FFC300'  
         };
-
-
 
         // go back to EX button.
         var blueBoxHeight = 1.7;
@@ -112,7 +107,7 @@ Homeless.choicesToMake = {
         // shelter button.
         var blueButtonThreePositionX = this.game.width/2+150;
         var blueButtonThreePositionY = this.game.height/2+50;
-        this.blueButtonThree = this.game.add.button(blueButtonThreePositionX, blueButtonThreePositionY, "blueButton", this.shelter, this);
+        this.blueButtonThree = this.game.add.button(blueButtonThreePositionX, blueButtonThreePositionY, "blueButton", this.canYouGetIntoShelter, this);
         this.blueButtonThree.anchor.set(0.5);
         this.blueButtonThree.alpha = 0.2;
         this.blueButtonThree.scale.setTo(4.0, blueBoxHeight);
@@ -149,10 +144,9 @@ Homeless.choicesToMake = {
         this.player.body.velocity.x = 0;
         this.player.body.allowGravity = false;
         this.player.scale.setTo(1.7);
-
         this.player.play("player");
-
         this.loadStartingTextAndMoney();
+
 
     },
 
@@ -331,12 +325,14 @@ Homeless.choicesToMake = {
 
 
     exBoyFriend: function(){
+        Homeless.game.global.goBackToEx = true;
         this.click.play();
         this.game.state.start("goBackToExOneState", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
         console.log("clicking exbofriendButton");
     },
 
     buyAlcohol: function(){
+        Homeless.game.global.retreatism = true;
         this.click.play();
         if(Homeless.game.global.gotAlcohol == false && Homeless.game.global.coins >=2) {
             console.log(Homeless.game.global.record);
@@ -374,10 +370,11 @@ Homeless.choicesToMake = {
     },
 
     compassionateDisruption: function(){
+        Homeless.game.global.compassionateDisruption = true;
         this.click.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("compassionate Disruption button clicked!");
-            console.log(Homeless.game.global);
+            console.log(Homeless.game.global.compassionateDisruption);
             this.game.state.start("compassionateDisruption", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
             //this.fade("PlayGame");
         }, this);       
@@ -405,18 +402,53 @@ Homeless.choicesToMake = {
         }
     },
 
+    canYouGetIntoShelter: function(){
+
+            
+            // coins : 0,
+            // countUntilJail: 0,
+            // record : false,
+            // compassionateDisruption: false,
+            // gotAlcohol : false,
+            // childThere : true,
+            // // if begging text is false the info scene after the begging for change will not show.
+            // beggingText : true,
+            // goBackToEx : false,
+            // retreatism : false,
+            // changePlease : false,
+
+        if(Homeless.game.global.changePlease == true && Homeless.game.global.compassionateDisruption == true){
+            this.shelterGotIn();
+        } else {
+            this.shelter();
+        }
+    },
 
     shelter: function(){
         this.click.play();
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log("shelter button clicked!");
-            console.log(Homeless.game.global);
+            console.log("change please is: "+ Homeless.game.global.changePlease);
+            console.log("compassionate disruption is: "+ Homeless.game.global.compassionateDisruption);
+
             this.game.state.start("sheltersTextChoice", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
             //this.fade("PlayGame");
         }, this);        
     },
 
+    shelterGotIn: function(){
+        this.click.play();
+        this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
+            console.log("shelter button clicked!");
+            console.log("change please is: "+ Homeless.game.global.changePlease);
+            console.log("compassionate disruption is: "+ Homeless.game.global.compassionateDisruption);
+            this.game.state.start("sheltersTextOneChoice", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            //this.fade("PlayGame");
+        }, this);        
+    },
+
     startGame: function() {
+        Homeless.game.global.changePlease = true;
         this.click.play();
         // var cheer = this.game.add.audio("cheer");
         // cheer.play();

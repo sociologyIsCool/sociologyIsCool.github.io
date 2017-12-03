@@ -28,15 +28,11 @@ Homeless.introMisconceptionsTwoState = {
                       };
 
         this.introText = [
-            
             "Another sociological theory that can be used to explain capitalism",
             "as a cause for homelessness is conflict theory.",
             "conflict theory can be used to explain capitalism and ultimately",
             "homelessness because constant resentment is held by those who",
             "have against those who have not."
-           
-
-
         ];
 
 
@@ -159,7 +155,6 @@ Homeless.introMisconceptionsTwoState = {
             //  Get the next line after the lineDelay amount of ms has elapsed
             this.game.time.events.add(this.lineDelay, this.nextLine, this);
         }
-
     },
 
 
