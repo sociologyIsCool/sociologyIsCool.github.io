@@ -16,9 +16,6 @@ Homeless.choicesToMake = {
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
         this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
 
-
-
-
         this.style = { 
             font: "bold 30px Arial", 
             fill: "#CC0000", 
@@ -153,8 +150,6 @@ Homeless.choicesToMake = {
         this.player.scale.setTo(1.7);
         this.player.play("player");
         this.loadStartingTextAndMoney();
-
-
     },
 
 
@@ -184,7 +179,6 @@ Homeless.choicesToMake = {
         this.getname = localStorage.getItem("playerName");
         return this.getname;
     },
-
 
 
     mouseOverButton: function(){
@@ -426,7 +420,6 @@ Homeless.choicesToMake = {
 
     canYouGetIntoShelter: function(){
 
-            
             // coins : 0,
             // countUntilJail: 0,
             // record : false,

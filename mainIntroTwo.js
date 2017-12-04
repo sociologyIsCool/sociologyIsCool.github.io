@@ -16,7 +16,7 @@ Homeless.mainIntroTwoState = {
 
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
         this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
-        this.game.time.events.loop(Phaser.Timer.SECOND*2, this.checkName, this);
+        this.game.time.events.loop(Phaser.Timer.SECOND*1, this.checkName, this);
       
         var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
             playButton.anchor.set(1.);
@@ -47,6 +47,7 @@ Homeless.mainIntroTwoState = {
         this.getNames = this.checkName();
         if(this.initializedName != this.getNames && thereIsANewName){
             this.initializedName = this.getNames;
+            this.game.time.events.events = []
             this.introWords.destroy();
             this.textOutPut();
             thereIsANewName = false;
@@ -70,6 +71,7 @@ Homeless.mainIntroTwoState = {
                      };
 
         this.introText = [
+
             "This is " + localStorage.getItem("playerName") +"", //localStorage.getItem("playerName"),
             "Things were getting bad in her relationship",
             "so she decided to take her son and leave.",
@@ -81,10 +83,7 @@ Homeless.mainIntroTwoState = {
 
         ];
 
-            // "Although most issues relevant to homelessness affect both",
-            // "men and women. \n\nHomeless women face unique circumstances",
-            // "which are often overlooked when it comes to finding",
-            // "permanent housing."
+          
 
         this.line = [];
         this.wordIndex = 0;
@@ -92,13 +91,8 @@ Homeless.mainIntroTwoState = {
         this.wordDelay = 120;
         this.lineDelay = 200;
 
-        // text.anchor.set(0.5);
-        // text.alpha = 0.1;
-
-        // this.game.add.tween(text).to( { alpha: 1 }, 2000, "Linear", true);
         this.introWords = this.game.add.text(10, 10, "", this.style);
         this.nextLine();
-
     },
 
 
