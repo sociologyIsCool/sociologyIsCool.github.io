@@ -317,7 +317,7 @@ Homeless.choicesToMake = {
 
     loadStartingTextAndMoney: function(){
         this.textOnScreenWidth = this.game.height-35;
-        this.amountOfMoney = this.add.text(this.game.width/2, this.textOnScreenWidth, "you have: $" + Homeless.game.global.coins.toFixed(2), this.style);
+        this.amountOfMoney = this.add.text(this.game.width/2, this.textOnScreenWidth, localStorage.getItem("playerName") + " has: $" + Homeless.game.global.coins.toFixed(2), this.style);
         this.amountOfMoney.anchor.set(0.5);
     },
 
@@ -388,7 +388,7 @@ Homeless.choicesToMake = {
             console.log("amount of clicks to jail time: " + Homeless.game.global.countUntilJail);
 
             this.amountOfMoney.destroy();
-            this.amountOfMoney = this.add.text(this.game.width/2, this.textOnScreenWidth, "you have: $" + Homeless.game.global.coins.toFixed(2), this.style);
+            this.amountOfMoney = this.add.text(this.game.width/2, this.textOnScreenWidth, localStorage.getItem("playerName") + " has: $" + Homeless.game.global.coins.toFixed(2), this.style);
             this.amountOfMoney.anchor.set(0.5);
             console.log(Homeless.game.global.coins);      
         } 

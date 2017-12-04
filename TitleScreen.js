@@ -75,7 +75,6 @@ Homeless.titleScreenState = {
         this.player.body.allowGravity = false;
         this.player.scale.setTo(1.3,1.3);
 
-
         this.titleText();
     },
 
@@ -108,8 +107,6 @@ Homeless.titleScreenState = {
         }
 
     },
-
-  
 
     titleText: function(){
 
@@ -154,8 +151,6 @@ Homeless.titleScreenState = {
                                   strokeThickness: 6,    
                                   fill: '#FFC300' 
                                 };
-
-
 
         var secondTextTitle = this.game.add.text(this.game.width/2, this.game.world.height/2 - 50, randomSecondText, styleForSecondText);
             secondTextTitle.anchor.set(0.5);
@@ -234,9 +229,8 @@ Homeless.titleScreenState = {
             console.log("it werks");
             console.log(Homeless.game.global);
             // this.state.start("infoOne");
-            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
+            this.game.state.start("mainIntroTwo", Phaser.Plugin.StateTransition.Out.SlideBottom, Phaser.Plugin.StateTransition.In.SlideBottom);
             //this.fade("PlayGame");
         }, this);
     },
-
 };

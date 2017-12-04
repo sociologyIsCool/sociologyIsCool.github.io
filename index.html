@@ -6,26 +6,40 @@
 		<title>Homeless In Hawaii</title>
 
 		<style>
-		  body {
-		  	background-color: black;
-		    padding: 0px;
-		    margin: 0px;
-		    overflow-y: scroll;
+		body {
+		background-color: black;
+		padding: 0px;
+		margin: 0px;
+		}
 
-		  }
+		#yourName {
+		  position: absolute;
+		  top: calc(72%);
+		  left:calc(26%);
+		  z-index:10;
+		  background-color: #ffffff; /* Blue */
 
-		 body::-webkit-scrollbar {
-    width: 1em;
-}
- 
-body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
+		}
+
+		
+
+		@media only screen 
+		and (min-device-width : 414px) 
+		and (max-device-width : 736px) 
+		and (orientation : landscape) { 
+		/* STYLES GO HERE */
+
+		#yourName {
+		  position: absolute;
+		  top:92%;
+		  left:40%;
+		  z-index:10;
+		}
+
+
+		}
+
+
 		  </style>
 
 	</head>
@@ -59,11 +73,38 @@ body::-webkit-scrollbar-thumb {
 		<script type="text/javascript" src="Game.js"></script>
 		<script type="text/javascript" src="TitleScreen.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<div id="yourName">
+			<button onclick = "enterName()">Enter Characters Name</button>
+
+
+			<script>
+
+				var nameNotEnteredDefaultValue = "Debbie"
+				localStorage.setItem("playerName", nameNotEnteredDefaultValue);
+				console.log("your default name is: " +localStorage.getItem("playerName"));
+				function enterName(){
+					var enteredName = prompt("Please Enter A Custom Name", "Kimberly");
+					while(enteredName == "" || enteredName == null){
+						enteredName = prompt("Please Enter A Custom Name", "Debbie");
+					}
+					console.log(enteredName);
+
+					localStorage.setItem("playerName", enteredName);
+					console.log("name from local storage: " + localStorage.getItem("playerName"))
+
+				}
+
+
+
+
+			</script>
+		</div>
+
 		
 
 	</body>
-	<audio controls autoplay>
+	<!-- <audio controls autoplay>
 			<source src="assets/sprites/RSAudio.mp3" type="audio/mp3">
 			Your browser does not support the audio element.
-		</audio>
+		</audio> -->
 </html>

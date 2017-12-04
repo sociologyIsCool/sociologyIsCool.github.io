@@ -11,6 +11,8 @@ Homeless.mainIntroTwoState = {
 
     },
     create: function() {
+
+        console.log(localStorage.getItem("playerName"));
       
         var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
             playButton.anchor.set(1.);
@@ -23,16 +25,14 @@ Homeless.mainIntroTwoState = {
                      };
 
         this.introText = [
-            "There is no single reason that contributes to homelessness",
-            "in society. \n",
+            "This is " + localStorage.getItem("playerName"),
+            "Things were getting bad in her relationship with", 
+            "her boyfriend so she decided to take her son Nick",
+            "and leave.  with her but she has no where to go",
+            "she has no family on the island", 
+            "What is she going to do?"
+            
 
-            "It is a multidimensional issue with a variety of underlying",
-            "economic and social factors which demands response on ",
-            "several fronts\n",
-           
-            "Domestic Violence, Poverty, Substance Abuse, Lack of Affordable Housing,",
-            "and Mental Illness are just a few social issues which factor into",
-            "the issue of homelessness."
         ];
 
             // "Although most issues relevant to homelessness affect both",
@@ -114,7 +114,7 @@ Homeless.mainIntroTwoState = {
         this.game.time.events.add(Phaser.Timer.SECOND * 0.4, function() {
             console.log(Homeless.game.global);
             //this.state.start("infoTwo");
-            this.game.state.start("mainIntroThree", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+            this.game.state.start("choicesToMake", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
 
             //this.fade("PlayGame");
         }, this);

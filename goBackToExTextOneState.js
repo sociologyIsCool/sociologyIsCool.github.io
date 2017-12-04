@@ -5,7 +5,6 @@ Homeless.goBackToExOneState = {
     init: function() {
 
     
-
     // this.game.stage.backgroundColor = "#00000";
     this.game.stage.backgroundColor = "#11111";
 
