@@ -6,11 +6,18 @@ Homeless.choicesToMake = {
         this.game.stage.backgroundColor = "#00000";
     },
     create: function() {
+
+        // gets players name.
+        this.initializedName =localStorage.getItem("playerName");
+
         // Homeless.game.global.coins = Homeless.game.global.coins+4;
 
         this.click = this.game.add.audio('click');
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
         this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
+
+
+
 
         this.style = { 
             font: "bold 30px Arial", 
@@ -150,7 +157,17 @@ Homeless.choicesToMake = {
 
     },
 
+
     update: function() {
+
+        var thereIsANewName = true;
+        this.getNames = this.checkName();
+        if(this.initializedName != this.getNames && thereIsANewName){
+            this.initializedName = this.getNames;
+            this.amountOfMoney.destroy();
+            this.loadStartingTextAndMoney();
+            thereIsANewName = false;
+        } 
 
         this.mouseOverButton();
 
@@ -162,6 +179,13 @@ Homeless.choicesToMake = {
             }
         }
     },
+
+    checkName: function(){
+        this.getname = localStorage.getItem("playerName");
+        return this.getname;
+    },
+
+
 
     mouseOverButton: function(){
         if (this.blueButtonOne.input.pointerOver())

@@ -1,6 +1,4 @@
 
-
-
 var Homeless = Homeless || {};
 
 Homeless.mainIntroTwoState = {
@@ -14,8 +12,11 @@ Homeless.mainIntroTwoState = {
 
         console.log(localStorage.getItem("playerName"));
 
+        this.initializedName =localStorage.getItem("playerName");
+
         this.game.time.events.loop(Phaser.Timer.SECOND*6, this.kidTalkingToMommy, this);
         this.game.time.events.loop(Phaser.Timer.SECOND*5, this.mommyTalking, this);
+        this.game.time.events.loop(Phaser.Timer.SECOND*2, this.checkName, this);
       
         var playButton = this.game.add.button(this.game.width-10, this.game.height, "infoButton", this.infoTwoDialogState, this);
             playButton.anchor.set(1.);
@@ -23,11 +24,8 @@ Homeless.mainIntroTwoState = {
             playButton.alpha = 0.5;
             playButton.scale.setTo(0.25,0.25);
 
-
         // create child
         this.isChildThere();
-
-
 
           //create player.
         this.player = this.add.sprite(this.game.width/2, this.game.height / 2, 'player', 7);
@@ -39,13 +37,40 @@ Homeless.mainIntroTwoState = {
         this.player.scale.setTo(1.7);
         this.player.play("player");
 
+        this.textOutPut();
+
+    },
+
+    update: function() {
+
+        var thereIsANewName = true;
+        this.getNames = this.checkName();
+        if(this.initializedName != this.getNames && thereIsANewName){
+            this.initializedName = this.getNames;
+            this.introWords.destroy();
+            this.textOutPut();
+            thereIsANewName = false;
+        } 
+
+
+
+        if(Homeless.game.global.childThere == true){
+            this.childRunning();
+            if(this.kidText){
+                this.kidText.x = Math.floor(this.kid.x + this.kid.width / 2-40);
+                this.kidText.y = Math.floor(this.kid.y + this.kid.height / 2-100);
+            }
+        }       
+    },
+
+    textOutPut: function(){
 
         this.style = { font: "15px Arial", 
                       fill: "#ffffff"
                      };
 
         this.introText = [
-            "This is " + localStorage.getItem("playerName"),
+            "This is " + localStorage.getItem("playerName") +"", //localStorage.getItem("playerName"),
             "Things were getting bad in her relationship",
             "so she decided to take her son and leave.",
             "\nNow she's on the streets",
@@ -54,7 +79,6 @@ Homeless.mainIntroTwoState = {
 
             "\nWhat is she going to do?"
 
-
         ];
 
             // "Although most issues relevant to homelessness affect both",
@@ -62,38 +86,26 @@ Homeless.mainIntroTwoState = {
             // "which are often overlooked when it comes to finding",
             // "permanent housing."
 
-
         this.line = [];
         this.wordIndex = 0;
         this.lineIndex = 0;
         this.wordDelay = 120;
         this.lineDelay = 200;
 
-
         // text.anchor.set(0.5);
         // text.alpha = 0.1;
 
         // this.game.add.tween(text).to( { alpha: 1 }, 2000, "Linear", true);
         this.introWords = this.game.add.text(10, 10, "", this.style);
-
         this.nextLine();
 
-
-    },
-
-    update: function() {
-
-        if(Homeless.game.global.childThere == true){
-            this.childRunning();
-            if(this.kidText){
-                this.kidText.x = Math.floor(this.kid.x + this.kid.width / 2-40);
-                this.kidText.y = Math.floor(this.kid.y + this.kid.height / 2-100);
-            }
-        }
-       
     },
 
 
+    checkName: function(){
+        this.getname = localStorage.getItem("playerName");
+        return this.getname;
+    },
 
     mommyTalking: function(){
 
@@ -118,14 +130,7 @@ Homeless.mainIntroTwoState = {
         this.momText.alpha = 0.9;
         this.momPls = this.game.add.tween(this.momText).to({alpha:1}, 3000, "Linear", true);
         this.momPls.onComplete.add(function(){this.momText.destroy();},this); 
-
     },
-
-
-
-
-
-
 
     kidTalkingToMommy: function(){
         if(Homeless.game.global.childThere == true){
@@ -162,12 +167,7 @@ Homeless.mainIntroTwoState = {
             this.pls = this.game.add.tween(this.kidText).to({alpha:1}, 3000, "Linear", true);
             this.pls.onComplete.add(function(){this.kidText.destroy();},this); 
         }
-
-
     },
-
-
-
 
 
     isChildThere: function(){
@@ -181,8 +181,6 @@ Homeless.mainIntroTwoState = {
             this.kid.body.allowGravity = false;
             this.kid.scale.setTo(1.2,1.2);
 
-
-       
         } else {
             console.log("child taken away");
             this.textOnScreenWidth = this.game.height-35;
@@ -190,7 +188,6 @@ Homeless.mainIntroTwoState = {
             this.takenAway.anchor.set(0.5);
         }
     },
-
 
      childRunning: function(){
          if(this.kid.body.x >= 500){
