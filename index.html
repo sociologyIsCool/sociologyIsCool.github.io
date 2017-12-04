@@ -14,11 +14,19 @@
 
 		#yourName {
 		  position: absolute;
-		  top: calc(72%);
+		  top: calc(75%);
 		  left:calc(26%);
 		  z-index:10;
 		  background-color: #ffffff; /* Blue */
 
+		}
+
+		#audioBox {
+		  position: absolute;
+		  top: calc(75%);
+		  left:calc(54%);
+		  z-index:10;
+		  background-color: #ffffff; /* Blue */
 		}
 
 		
@@ -29,12 +37,19 @@
 		and (orientation : landscape) { 
 		/* STYLES GO HERE */
 
-		#yourName {
-		  position: absolute;
-		  top:92%;
-		  left:40%;
-		  z-index:10;
-		}
+			#yourName {
+			  position: absolute;
+			  top:92%;
+			  left:40%;
+			  z-index:10;
+			}
+
+			#audioBox {
+			  position: absolute;
+			  top:0%;
+			  left:60%;
+			  z-index:10;
+			}
 
 
 		}
@@ -76,6 +91,8 @@
 		<div id="yourName">
 			<button onclick = "enterName()">Enter Characters Name</button>
 
+			
+
 
 			<script>
 
@@ -100,11 +117,14 @@
 			</script>
 		</div>
 
+		<div id="audioBox">
+			<audio controls autoplay>
+				<source src="assets/sprites/RSAudio.mp3" type="audio/mp3">
+				Your browser does not support the audio element.
+			</audio>
+		</div> 
 		
 
 	</body>
-	<audio controls autoplay>
-			<source src="assets/sprites/RSAudio.mp3" type="audio/mp3">
-			Your browser does not support the audio element.
-		</audio>
+	
 </html>
