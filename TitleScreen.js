@@ -159,8 +159,8 @@ Homeless.titleScreenState = {
      
 
         //var blueButtonFiveText = "SOC 100 - EUNICE BREKKE";     
-        var blueButtonFiveTextOnScreen = this.game.add.text(this.game.width/2, this.game.height/2-130, blueButtonFiveText,styleForThirdText);
-            blueButtonFiveTextOnScreen.anchor.set(0.5);
+        //var blueButtonFiveTextOnScreen = this.game.add.text(this.game.width/2, this.game.height/2-130, blueButtonFiveText,styleForThirdText);
+          //  blueButtonFiveTextOnScreen.anchor.set(0.5);
 
 
         var alohaText = ["\"Oahu Edition\"", "\"Social Stratification!\""];
